@@ -1,5 +1,6 @@
 package com.e_com.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,11 +14,23 @@ public class Users {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int id;
+	
+	@Column(name = "first_name")
 	private String firstName;
+	
+	@Column(name = "last_name")
 	private String lastName;
+	
+	@Column(name = "username")
 	private String username;
+	
+	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "dob")
 	private String dob;
+	
+	@Column(name = "password")
 	private String password;
 	
 	public Users() {}
