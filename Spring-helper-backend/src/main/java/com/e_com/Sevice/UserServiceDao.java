@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.e_com.Entity.Users;
 
-@Service
 public interface UserServiceDao {
 
 	public List<Users> getAllUsers();

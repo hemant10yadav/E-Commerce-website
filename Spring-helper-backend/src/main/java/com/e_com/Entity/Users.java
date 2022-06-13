@@ -1,5 +1,7 @@
 package com.e_com.Entity;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +30,7 @@ public class Users {
 	private String email;
 	
 	@Column(name = "dob")
-	private String dob;
+	private Date dob;
 	
 	@Column(name = "password")
 	private String password;
@@ -75,11 +77,11 @@ public class Users {
 		this.email = email;
 	}
 
-	public String getDob() {
+	public Date getDob() {
 		return dob;
 	}
 
-	public void setDob(String dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 
