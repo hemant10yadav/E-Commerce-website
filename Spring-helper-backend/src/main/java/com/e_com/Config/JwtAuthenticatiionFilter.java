@@ -28,7 +28,6 @@ public class JwtAuthenticatiionFilter extends OncePerRequestFilter {
 	private CustomUserDetailService customUserDetailService;
 
 	public JwtAuthenticatiionFilter() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@SuppressWarnings("unused")
@@ -37,21 +36,20 @@ public class JwtAuthenticatiionFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 
 		String requestTokenHeader = request.getHeader("Authorization");
-		String username = null;
-		String jwtToken = null;
+		String username=null;
+		String jwtToken=null;
 
 		if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
 			jwtToken = requestTokenHeader.substring(7);
 
 			try {
-				this.jwtUtil.extractUsername(jwtToken);
+				username = this.jwtUtil.extractUsername(jwtToken);
 
 			} catch (Exception e) {
+				
 				e.printStackTrace();
 			}
-
 			UserDetails userDetails = this.customUserDetailService.loadUserByUsername(username);
-
 			if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
 						userDetails, null, userDetails.getAuthorities());
@@ -63,7 +61,6 @@ public class JwtAuthenticatiionFilter extends OncePerRequestFilter {
 			} else {
 				System.out.println("token is not valid");
 			}
-
 		}
 		filterChain.doFilter(request, response);
 	}

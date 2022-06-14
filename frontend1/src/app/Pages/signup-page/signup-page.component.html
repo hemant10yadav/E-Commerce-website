@@ -7,52 +7,54 @@
             <div class="row justify-content-center">
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-                <form class="mx-1 mx-md-4">
+                <form #Form="ngForm" ngNativeValidate class="mx-1 mx-md-4">
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text"  placeholder="First name" class="form-control" [(ngModel)]="data.firstName" />
+                      <input type="text" placeholder="First name" class="form-control" name="firstName" required  [(ngModel)]="data.firstName"
+                             #nameField="ngModel" />
+                      <h6 [hidden]="nameField.valid || nameField.untouched" class="text-danger mt-2" >Firstname is Mandatory </h6>
                     </div>
                   </div>
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text"  placeholder="Last name" class="form-control" [(ngModel)]="data.lastName" />
+                      <input type="text" placeholder="Last name" class="form-control" name="lastname" required [(ngModel)]="data.lastName"/>
                     </div>
                   </div>
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text"  placeholder="Username" class="form-control" [(ngModel)]="data.username" />
+                      <input type="text" placeholder="Username" class="form-control" name="username" required [(ngModel)]="data.username"/>
                     </div>
                   </div>
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input  type="Date" [(ngModel)]="data.dob" />
+                      <input type="Date" [(ngModel)]="data.dob" name="dob"/>
                     </div>
                   </div>
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="email" placeholder="E-mail" class="form-control" [(ngModel)]="data.email" />
+                      <input type="email" placeholder="Email" class="form-control" name="email" required [(ngModel)]="data.email"/>
                     </div>
                   </div>
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="password" placeholder="Password" class="form-control" [(ngModel)]="data.password" />
+                      <input type="password" placeholder="Password" class="form-control" name="password" required [(ngModel)]="data.password"/>
                     </div>
                   </div>
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="password" placeholder="Repeat your password" class="form-control" />
+                      <input type="password" placeholder="Repeat your password" required class="form-control"/>
                     </div>
                   </div>
                   <div class="form-check d-flex justify-content-center mb-5">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
-                    <label class="form-check-label" >
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c"/>
+                    <label class="form-check-label">
                       I agree all statements in <a href="#!">Terms of service</a>
                     </label>
                   </div>
@@ -72,9 +74,3 @@
     </div>
   </div>
 </section>
-<h3 class="bg-danger">firstName == {{data.firstName}}</h3>
-<h3>lastName == {{data.lastName}}</h3>
-<h3>email == {{data.email}}</h3>
-<h3>dob == {{data.dob}}</h3>
-<h3>username == {{data.username}}</h3>
-<h3>password == {{data.password}}</h3>

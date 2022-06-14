@@ -8,12 +8,12 @@ import {HttpClient} from "@angular/common/http";
 })
 export class SignupPageComponent implements OnInit {
   data = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    dob: '',
-    username: ''
+    firstName: null,
+    lastName: null,
+    email: null,
+    password: null,
+    dob: null,
+    username: null
   }
   url = 'http://localhost:8080/e-com/api/signup'
 
@@ -25,7 +25,9 @@ export class SignupPageComponent implements OnInit {
 
   submit() {
     this.httpClient.post<any>(this.url, this.data).subscribe(data => {
-      console.log(data);
+      alert("User Registration is done successfully")
+    },(e)=>{
+      alert("Something went wrong");
     })
   }
 

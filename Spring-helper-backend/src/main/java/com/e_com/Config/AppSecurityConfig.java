@@ -39,7 +39,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure (HttpSecurity http) throws Exception {
 		http.csrf().disable().cors().disable()
 							.authorizeRequests()
-							.antMatchers("/login/token").permitAll().anyRequest().authenticated()
+							.antMatchers("/login/token","/api/signup").permitAll().anyRequest().authenticated()
 							.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 							.and().exceptionHandling().authenticationEntryPoint(entryPoint);
 		

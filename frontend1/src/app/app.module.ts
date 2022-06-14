@@ -7,12 +7,14 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {LoginPageComponent} from './Pages/login-page/login-page.component';
 import {SignupPageComponent} from "./Pages/signup-page/signup-page.component";
+import {SharedComponentModule} from "./components/shared-components/shared-component.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+
 
   ],
   imports: [
@@ -20,6 +22,7 @@ import {SignupPageComponent} from "./Pages/signup-page/signup-page.component";
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    SharedComponentModule
 
   ],
   providers: [],
