@@ -1,5 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
+*{
+  font-family: 'Work Sans';
+}
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.app-bg-color {
+  background-color: #ff735c!important;
+}
+
+.app-text-color {
+ color: #ff735c!important;
+}
+
+.fs-14 {
+  font-size: 12px;
 }

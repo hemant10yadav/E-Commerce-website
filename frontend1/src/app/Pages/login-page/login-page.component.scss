@@ -1,7 +1,10 @@
-div.center{
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+
+.bg-facebook {
+  border: 2px solid #039be4;
+  width: 49%;
+}
+
+.bg-gmail {
+  border: 2px solid #f14336;
+  width: 49%;
 }

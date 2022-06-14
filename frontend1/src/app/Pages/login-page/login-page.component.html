@@ -1,25 +1,35 @@
-<div class="bg-info bg-image" style="height: 100vh; width: 100vw">
-  <div class="center">
-    <div class="border border-2 border-secondary text-center p-5 rounded-3 bg-white">
-      <h1 class="mb-5">Login</h1>
-      <div class="input-group input-group-lg">
-        <span class="input-group-text bg-white" id="inputGroup-sizing-lg"><img height="30" width="30"
-                                                                      src="assets/icons/user.gif"></span>
-        <input type="text" class="form-control" aria-label="Sizing example input"
-               aria-describedby="inputGroup-sizing-lg" placeholder="Username">
-      </div>
-      <div class="input-group input-group-lg mt-4">
-        <span class="input-group-text bg-white"><img height="30" width="30" src="assets/icons/key-password.gif"></span>
-        <input type="password" class="form-control" aria-label="Sizing example input"
-               placeholder="Password">
-      </div>
-      <div>
-        <button class="btn btn-primary mt-3  w-100">Login</button>
-      </div>
-      <div class="mt-4">
-        <button class="btn w-50">facebook</button>
-        <button class="btn w-50"><img height="60" width="60" src="assets/images/gmail.gif"></button>
-      </div>
+<div class="row mx-5 mt-5">
+  <div class="d-none d-xl-block col-xl-7">
+    <div class="m-0 p-0 d-flex justify-content-center">
+      <img draggable="false" height="600" src="assets/images/background/gif/cart.gif">
     </div>
   </div>
+  <div class="col col-xl-5 text-center p-5 rounded-3">
+    <h1 class="mb-5">Login</h1>
+    <div class="input-group input-group-lg">
+        <span class="input-group-text bg-white" id="inputGroup-sizing-lg"><img draggable="false" height="30" width="30"
+                                                                               src="assets/icons/user.gif"></span>
+      <input type="text" class="form-control shadow-none" aria-label="Sizing example input"
+             aria-describedby="inputGroup-sizing-lg" placeholder="Username" name="username" [(ngModel)]="data.username">
+    </div>
+    <div class="input-group input-group-lg mt-4">
+      <span class="input-group-text bg-white"><img draggable="false" height="30" width="30"
+                                                   src="assets/icons/key-password.gif"></span>
+      <input type="password" class="form-control shadow-none" aria-label="Sizing example input"
+             name="password" [(ngModel)]="data.password" placeholder="Password">
+    </div>
+    <div class="text-start mt-2">
+      <a class="fs-14 cursor-pointer">Forgot password ?</a>
+    </div>
+    <div>
+      <button class="btn app-bg-color mt-3  w-100">Login</button>
+    </div>
+    <div class="mt-4 d-flex justify-content-evenly">
+      <button class=" btn bg-facebook"><img draggable="false" height="30" src="assets/icons/facebook.gif"></button>
+      <button class=" btn bg-gmail"><img draggable="false" height="30" src="assets/icons/icons8-gmail-logo.gif">
+      </button>
+    </div>
+    <span> <a href="/signup">Create new account?</a></span>
+  </div>
+
 </div>

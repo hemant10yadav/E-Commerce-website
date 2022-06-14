@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
   @Input()
-  hideSearchBar=true;
+  hideSearchBar=false;
 
   constructor() { }
 
