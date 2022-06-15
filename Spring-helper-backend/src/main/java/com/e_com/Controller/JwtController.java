@@ -1,7 +1,18 @@
 package com.e_com.Controller;
 
+import com.e_com.Entity.Users;
+import com.e_com.ExceptionHandler.UserException;
+import com.e_com.Sevice.UserServiceDao;
+import com.sun.org.apache.bcel.internal.generic.ATHROW;
+import org.hibernate.HibernateException;
+import org.hibernate.JDBCException;
+import org.hibernate.QueryException;
+import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.orm.hibernate5.HibernateJdbcException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,9 +29,11 @@ import com.e_com.Entity.JwtResponse;
 import com.e_com.Sevice.CustomUserDetailService;
 import com.e_com.Utility.JwtUtil;
 
+import java.util.Locale;
+
 @RestController
 @CrossOrigin
-@RequestMapping("/login")
+@RequestMapping("/api")
 public class JwtController {
 
 	@Autowired
@@ -28,16 +41,16 @@ public class JwtController {
 	
 	@Autowired
 	private JwtUtil jwtutil;
-	
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
+
+	@Autowired
+	private UserServiceDao userServiceDao;
+
+	public JwtController() {}
 	
-	
-	public JwtController() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	@PostMapping("/token")
+	@PostMapping("/login")
 	public ResponseEntity<?> genrateToken(@RequestBody JwtRequest jwtRequest) throws Exception{
 		System.out.println(jwtRequest);
 		try{
@@ -46,23 +59,28 @@ public class JwtController {
 					new UsernamePasswordAuthenticationToken(
 							jwtRequest.getUsername(), jwtRequest.getPassword()));
 			
-		}catch(UsernameNotFoundException exc){
+		}catch(Exception exc) {
 			System.out.println("catch1");
 			exc.printStackTrace();
-			throw new Exception("Bad Credential");
-		}catch(BadCredentialsException exc) {
-			System.out.println("catch2");
-			exc.printStackTrace();
-			throw new Exception("Bad Credential");
+			throw new UserException("User not found exception");
 		}
-		
-		
+
 		UserDetails userDetails = this.customUserDetailService.
 				loadUserByUsername(jwtRequest.getUsername());
 		String token = this.jwtutil.generateToken(userDetails);
 		System.out.println(userDetails);
 		return ResponseEntity.ok(new JwtResponse(token));
-		
+	}
+
+	@PostMapping("/signup")
+	public Users signupForUser(@RequestBody Users theUser) {
+		try {
+			this.userServiceDao.saveUser(theUser);
+		}catch (JDBCException exc){
+			System.out.println("=============>>>>>>> catch");
+			System.out.println(exc.getCause().getMessage());
+		}
+		return null;
 	}
 	
 

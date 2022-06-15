@@ -32,13 +32,4 @@ public class RestControllerforSignup {
 	public String home() {
 		return "home";
 	}
-	
-	
-	@PostMapping("/signup")
-	public Users signupForUser(@RequestBody Users theUser) {
-		System.out.println("================>>>>>> " + theUser);
-		return userServiceDao.saveUser(theUser);
-	}
-	
-	
 }
