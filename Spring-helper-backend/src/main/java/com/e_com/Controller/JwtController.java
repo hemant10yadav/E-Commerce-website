@@ -1,6 +1,7 @@
 package com.e_com.Controller;
 
 import com.e_com.Entity.Users;
+import com.e_com.ExceptionHandler.DataBaseException;
 import com.e_com.ExceptionHandler.UserException;
 import com.e_com.Sevice.UserServiceDao;
 import com.sun.org.apache.bcel.internal.generic.ATHROW;
@@ -29,6 +30,7 @@ import com.e_com.Entity.JwtResponse;
 import com.e_com.Sevice.CustomUserDetailService;
 import com.e_com.Utility.JwtUtil;
 
+import java.sql.SQLException;
 import java.util.Locale;
 
 @RestController
@@ -52,7 +54,6 @@ public class JwtController {
 	
 	@PostMapping("/login")
 	public ResponseEntity<?> genrateToken(@RequestBody JwtRequest jwtRequest) throws Exception{
-		System.out.println(jwtRequest);
 		try{
 			System.out.println("try");
 			this.authenticationManager.authenticate(
@@ -60,9 +61,9 @@ public class JwtController {
 							jwtRequest.getUsername(), jwtRequest.getPassword()));
 			
 		}catch(Exception exc) {
-			System.out.println("catch1");
 			exc.printStackTrace();
 			throw new UserException("User not found exception");
+
 		}
 
 		UserDetails userDetails = this.customUserDetailService.
@@ -73,14 +74,20 @@ public class JwtController {
 	}
 
 	@PostMapping("/signup")
-	public Users signupForUser(@RequestBody Users theUser) {
-		try {
+	public void signupForUser(@RequestBody Users theUser) {
+		if(theUser.getFirstName()== null || theUser.getFirstName().length()==0
+			||theUser.getLastName() == null || theUser.getLastName().length()==0
+			||theUser.getPassword() == null || theUser.getPassword().length()==0
+			||theUser.getEmail() == null || theUser.getEmail().length()==0
+			||theUser.getDob()== null){
+			throw new DataBaseException("field is empty");
+		} else try {
 			this.userServiceDao.saveUser(theUser);
-		}catch (JDBCException exc){
-			System.out.println("=============>>>>>>> catch");
-			System.out.println(exc.getCause().getMessage());
+		}catch (ConstraintViolationException exc){
+			String hem=exc.getCause().getMessage();
+
+			throw new DataBaseException(hem);
 		}
-		return null;
 	}
 	
 

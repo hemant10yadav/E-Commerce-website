@@ -7,40 +7,43 @@
       <div class="text-center">
         <h1 class="app-text-color">Sign up</h1>
       </div>
-      <form>
+      <form #form="ngForm" name="form" (ngSubmit)="submit(form)">
         <div class="input-group  mt-4">
           <label class="input-group-text bg-white" for="firstname">
             <img draggable="false" height="30" width="30" src="assets/icons/user.gif">
           </label>
           <input type="text" class="form-control shadow-none"
-                 name="firstname" [(ngModel)]="data.firstName" placeholder="Firstname" id="firstname">
+                 [ngClass]="(firstName.hasError('required')  && form.submitted)? 'border-danger' : ''"
+                 name="firstname" [(ngModel)]="data.firstName" placeholder="Firstname" id="firstname"
+                 #firstName="ngModel" required>
           <input type="text" class="form-control shadow-none"
-                 name="lastname" [(ngModel)]="data.lastName" placeholder="Lastname">
+                 name="lastname" [(ngModel)]="data.lastName" placeholder="Lastname" #lastname="ngModel" required>
         </div>
         <div class="input-group  mt-4">
-          <label class="input-group-text bg-white" for="calender" >
+          <label class="input-group-text bg-white" for="calender">
             <img draggable="false" height="30" width="30" src="assets/icons/icons8-tear-off-calendar.gif">
           </label>
           <input type="date" class="form-control shadow-none" name="dob"
-               [(ngModel)]="data.dob" id="calender">
+                 [ngClass]="(firstName.hasError('required')  && form.submitted)? 'border-danger' : ''"
+                 [(ngModel)]="data.dob" id="calender" #dob="ngModel" required>
         </div>
         <div class="input-group  mt-4">
-          <span class="input-group-text bg-white" >
+          <span class="input-group-text bg-white">
             <img draggable="false" height="30" width="30" src="assets/icons/icons8-secured-letter.gif">
           </span>
           <input type="email" class="form-control shadow-none" name="email"
-                  [(ngModel)]="data.email" placeholder="email">
+                 [(ngModel)]="data.email" placeholder="email" #email="ngModel" required>
         </div>
         <div class="input-group  mt-4">
           <span class="input-group-text bg-white">
             <img draggable="false" height="30" width="30" src="assets/icons/key-password.gif">
           </span>
           <input type="password" class="form-control shadow-none" name="password"
-                 [(ngModel)]="data.password" placeholder="Password">
-          <input type="password" class="form-control shadow-none" name="password"
-                 placeholder="Confirm password">
+                 [(ngModel)]="data.password" placeholder="Password" #password="ngModel" required>
+          <input type="password" class="form-control shadow-none" name="confirmPassword"
+                 placeholder="Confirm password" [(ngModel)]="confirmPassword">
         </div>
-        <button class="btn app-bg-color  mt-4 w-100">Sign up</button>
+        <button type="submit" class="btn app-bg-color mt-4 w-100">Sign up</button>
       </form>
     </div>
   </div>

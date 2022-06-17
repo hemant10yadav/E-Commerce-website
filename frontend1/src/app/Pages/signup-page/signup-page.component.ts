@@ -15,7 +15,8 @@ export class SignupPageComponent implements OnInit {
     dob: null,
     username: null
   }
-  url = 'http://localhost:8080/e-com/api/signup'
+  url = 'http://localhost:8080/Spring-helper-backend/api/signup'
+  confirmPassword: string;
 
   ngOnInit(): void {
   }
@@ -23,12 +24,13 @@ export class SignupPageComponent implements OnInit {
   constructor(private httpClient: HttpClient) {
   }
 
-  submit() {
-    this.httpClient.post<any>(this.url, this.data).subscribe(data => {
+  submit(data:any) {
+    console.log(data);
+   /* this.httpClient.post<any>(this.url, this.data).subscribe(data => {
       alert("User Registration is done successfully")
     },(e)=>{
       alert("Something went wrong");
-    })
+    })*/
   }
 
 }

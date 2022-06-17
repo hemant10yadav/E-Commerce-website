@@ -16,7 +16,6 @@ import com.e_com.Sevice.UserServiceDao;
 
 
 @RestController
-@CrossOrigin
 @RequestMapping("/api")
 public class RestControllerforSignup {
 	

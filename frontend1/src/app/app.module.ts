@@ -8,8 +8,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {LoginPageComponent} from './Pages/login-page/login-page.component';
 import {SignupPageComponent} from "./Pages/signup-page/signup-page.component";
 import {SharedComponentModule} from "./components/shared-components/shared-component.module";
-import {NgxUiLoaderModule, NgxUiLoaderRouterModule} from "ngx-ui-loader";
-import {TokenInterceptorServiceService} from "./services/token-interceptor-service.service";
+import {NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderRouterModule} from "ngx-ui-loader";
 
 @NgModule({
   declarations: [
@@ -28,14 +27,12 @@ import {TokenInterceptorServiceService} from "./services/token-interceptor-servi
     NgxUiLoaderModule,
     NgxUiLoaderRouterModule.forRoot({
       showForeground:true,
-    })
-
+    }),
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground:true,
+    }),
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptorServiceService,
-    multi: true
-  }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
