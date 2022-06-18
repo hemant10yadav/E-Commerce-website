@@ -2,14 +2,14 @@ package com.e_com.Sevice;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import com.e_com.Entity.Users;
+import com.e_com.Entity.User;
 
 public interface UserServiceDao {
 
-	public List<Users> getAllUsers();
-	public Users getUser(int theId);
-	public Users saveUser(Users theUser);
-	
+    public List<User> getAllUsers();
+
+    public User getUser(int theId);
+
+    public User saveUser(User theUser);
+
 }

@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.e_com.Entity.CustomUserdetails;
-import com.e_com.Entity.Users;
-import com.e_com.JwtRepo.UserRepository;
+import com.e_com.Entity.User;
+import com.e_com.Repository.UserRepository;
 
 @Service
 public class CustomUserDetailService implements UserDetailsService {
@@ -17,7 +17,6 @@ public class CustomUserDetailService implements UserDetailsService {
 	private UserRepository userRepository;
 	
 	public CustomUserDetailService() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -26,7 +25,7 @@ public class CustomUserDetailService implements UserDetailsService {
 		
 		
 		System.out.println("+++++++++++++++" + this.userRepository.findByUserName(username));
-		final Users user = this.userRepository.findByUserName(username);
+		final User user = this.userRepository.findByUserName(username);
 		
 		if(user == null) {
 			throw new UsernameNotFoundException("User Not Found");

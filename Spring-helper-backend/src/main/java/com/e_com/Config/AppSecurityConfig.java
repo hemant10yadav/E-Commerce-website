@@ -39,8 +39,11 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure (HttpSecurity http) throws Exception {
 		http.csrf().disable().cors().disable()
 							.authorizeRequests()
-							.antMatchers("/api/login").permitAll().anyRequest().authenticated()
-							.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+							.antMatchers("/api/**","/products/save")
+							.permitAll().anyRequest()
+							.authenticated()
+							.and().sessionManagement()
+							.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 							.and().exceptionHandling().authenticationEntryPoint(entryPoint);
 		
 		http.addFilterBefore(jwtFilter , UsernamePasswordAuthenticationFilter.class);

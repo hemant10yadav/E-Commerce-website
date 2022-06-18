@@ -7,35 +7,36 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.e_com.DAO.UserDao;
-import com.e_com.Entity.Users;
+import com.e_com.Entity.User;
 
 @Service
 public class UserServiceImpl implements UserServiceDao {
 
 	@Autowired
 	private UserDao userDao;
-	
+
 	public UserServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	@Transactional
-	public List<Users> getAllUsers() {
+	public List<User> getAllUsers() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	@Transactional
-	public Users getUser(int theId) {
+	public User getUser(int theId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	@Transactional
-	public Users saveUser(Users theUser) {
+	public User saveUser(User theUser) {
+
 		return userDao.saveUser(theUser);
 	}
 

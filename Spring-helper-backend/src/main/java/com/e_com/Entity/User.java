@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-public class Users {
+public class User {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class Users {
 	@Column(name = "password")
 	private String password;
 	
-	public Users() {}
+	public User() {}
 
 	public int getId() {
 		return id;

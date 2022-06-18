@@ -2,17 +2,16 @@ package com.e_com.Entity;
 
 import java.util.Collection;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class CustomUserdetails implements UserDetails {
 
 	//@Autowired
-	private Users user;
+	private User user;
 	
 	
-	public CustomUserdetails(Users user) {
+	public CustomUserdetails(User user) {
 		this.user = user;
 	}
 

@@ -1,24 +1,15 @@
 package com.e_com.Controller;
 
-import com.e_com.Entity.Users;
+import com.e_com.Entity.User;
 import com.e_com.ExceptionHandler.DataBaseException;
 import com.e_com.ExceptionHandler.UserException;
 import com.e_com.Sevice.UserServiceDao;
-import com.sun.org.apache.bcel.internal.generic.ATHROW;
-import org.hibernate.HibernateException;
-import org.hibernate.JDBCException;
-import org.hibernate.QueryException;
-import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
-import org.springframework.orm.hibernate5.HibernateJdbcException;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,13 +21,10 @@ import com.e_com.Entity.JwtResponse;
 import com.e_com.Sevice.CustomUserDetailService;
 import com.e_com.Utility.JwtUtil;
 
-import java.sql.SQLException;
-import java.util.Locale;
-
 @RestController
 @CrossOrigin
 @RequestMapping("/api")
-public class JwtController {
+public class LoginSignupController {
 
 	@Autowired
 	private CustomUserDetailService customUserDetailService;
@@ -50,7 +38,7 @@ public class JwtController {
 	@Autowired
 	private UserServiceDao userServiceDao;
 
-	public JwtController() {}
+	public LoginSignupController() {}
 	
 	@PostMapping("/login")
 	public ResponseEntity<?> genrateToken(@RequestBody JwtRequest jwtRequest) throws Exception{
@@ -74,7 +62,7 @@ public class JwtController {
 	}
 
 	@PostMapping("/signup")
-	public void signupForUser(@RequestBody Users theUser) {
+	public void signupForUser(@RequestBody User theUser) {
 		if(theUser.getFirstName()== null || theUser.getFirstName().length()==0
 			||theUser.getLastName() == null || theUser.getLastName().length()==0
 			||theUser.getPassword() == null || theUser.getPassword().length()==0

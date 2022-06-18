@@ -2,11 +2,11 @@ package com.e_com.DAO;
 
 import java.util.List;
 
-import com.e_com.Entity.Users;
+import com.e_com.Entity.User;
 
 public interface UserDao {
 
-	public List<Users> getAllUsers();
-	public Users getUser(int theId);
-	public Users saveUser(Users theUser);
+	public List<User> getAllUsers();
+	public User getUser(int theId);
+	public User saveUser(User theUser);
 }

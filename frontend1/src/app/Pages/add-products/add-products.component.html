@@ -1,0 +1,25 @@
+<div class="container">
+  <form>
+    <div>
+      <label>Product Name</label>
+      <input [(ngModel)]="productName">
+    </div>
+    <div>
+      <label>Product Category</label>
+      <input [(ngModel)]="category">
+    </div>
+    <div>
+      <label>Product Sub Category</label>
+      <input [(ngModel)]="subcategory">
+    </div>
+    <div>
+      <label>Price</label>
+      <input [(ngModel)]="price">
+    </div>
+    <div>
+      <label>Image </label>
+      <input type="file" (change)="onFileChanged($event)">
+    </div>
+  </form>
+
+</div>
