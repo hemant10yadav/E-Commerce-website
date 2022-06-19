@@ -1,6 +1,8 @@
 package com.e_com.Entity;
 
 import javax.persistence.*;
+import java.sql.Blob;
+import java.util.Arrays;
 
 @Entity
 @Table(name = "products")
@@ -22,15 +24,23 @@ public class Product {
     @Column(name = "price")
     private int price;
 
+    @Column(name = "image")
+    private String image;
+
     public Product() {
     }
 
-    public Product(int productId, String productName, String category, String subcategory, int price) {
+    public Product(int productId, String productName, String category, String subcategory, int price, String image) {
         this.productId = productId;
         this.productName = productName;
         this.category = category;
         this.subcategory = subcategory;
         this.price = price;
+        this.image = image;
+    }
+
+    public int getProductId() {
+        return productId;
     }
 
     public void setProductId(int productId) {
@@ -69,8 +79,12 @@ public class Product {
         this.price = price;
     }
 
-    public int getProductId() {
-        return productId;
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override
@@ -81,6 +95,7 @@ public class Product {
                 ", category='" + category + '\'' +
                 ", subcategory='" + subcategory + '\'' +
                 ", price=" + price +
+                ", image=" + image +
                 '}';
     }
 }

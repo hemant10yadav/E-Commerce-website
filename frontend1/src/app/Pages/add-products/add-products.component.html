@@ -1,5 +1,4 @@
 <div class="container">
-  <form>
     <div>
       <label>Product Name</label>
       <input [(ngModel)]="productName">
@@ -14,12 +13,13 @@
     </div>
     <div>
       <label>Price</label>
-      <input [(ngModel)]="price">
+      <input type="number" [(ngModel)]="price">
     </div>
     <div>
       <label>Image </label>
-      <input type="file" (change)="onFileChanged($event)">
+      <input type="file" (change)="handleUpload($event)">
     </div>
-  </form>
+  <button class="btn btn-danger" (click)="save()">save</button>
 
+  <img src="{{srcImage}}">
 </div>
