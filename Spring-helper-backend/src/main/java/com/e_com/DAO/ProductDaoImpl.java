@@ -22,6 +22,10 @@ public class ProductDaoImpl implements ProductDao {
         Session currentSession = sessionFactory.getCurrentSession();
         System.out.println("Enter into our repo========>>>  " + theProduct);
         currentSession.save(theProduct);
+        System.out.println("\n \n\n\n\n\n\n" +
+                "                                      " +
+                "                                     " +
+                " =======>>>>>>>SUCCESS<<<<<<=========");
     }
 
     @Override
