@@ -1,75 +1,48 @@
 package com.e_com.Entity;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 @Entity
-@Table(name = "Product_Image")
+@Table(name = "product_images")
 public class ProductImage {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    private String name;
-
-    private String type;
-
-    @Lob
-    private byte[] data;
+    @Column(name="image_data")
+    private String imageData;
 
     public ProductImage() {
     }
 
-    public ProductImage( String name, String type, byte[] data) {
-        this.name = name;
-        this.type = type;
-        this.data = data;
-    }
-
-
-    public void setId(String id) {
+    public ProductImage(int id, String imageData) {
         this.id = id;
+        this.imageData = imageData;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getImageData() {
+        return imageData;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public byte[] getData() {
-        return data;
-    }
-
-    public void setData(byte[] data) {
-        this.data = data;
+    public void setImageData(String imageData) {
+        this.imageData = imageData;
     }
 
     @Override
     public String toString() {
         return "ProductImage{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", data=" + Arrays.toString(data) +
+                "id=" + id +
+                ", imageData=" + imageData +
                 '}';
     }
 }

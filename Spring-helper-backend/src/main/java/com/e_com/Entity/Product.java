@@ -24,19 +24,20 @@ public class Product {
     @Column(name = "price")
     private int price;
 
-    @Column(name = "image")
-    private String image;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "image_id")
+    private ProductImage productImage;
 
     public Product() {
     }
 
-    public Product(int productId, String productName, String category, String subcategory, int price, String image) {
+    public Product(int productId, String productName, String category, String subcategory, int price, ProductImage productImage) {
         this.productId = productId;
         this.productName = productName;
         this.category = category;
         this.subcategory = subcategory;
         this.price = price;
-        this.image = image;
+        this.productImage = productImage;
     }
 
     public int getProductId() {
@@ -79,12 +80,12 @@ public class Product {
         this.price = price;
     }
 
-    public String getImage() {
-        return image;
+    public ProductImage getProductImage() {
+        return productImage;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setProductImage(ProductImage productImage) {
+        this.productImage = productImage;
     }
 
     @Override
@@ -95,7 +96,7 @@ public class Product {
                 ", category='" + category + '\'' +
                 ", subcategory='" + subcategory + '\'' +
                 ", price=" + price +
-                ", image=" + image +
+                ", productImage=" + productImage +
                 '}';
     }
 }
