@@ -9,20 +9,18 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AddProductsComponent implements OnInit {
 
-  url='http://localhost:8080/Spring-helper-backend/products/save';
+  url = 'http://localhost:8080/Spring-helper-backend/products/save';
   public srcImage: any;
-  selectedFile: File;
   productName: String;
   price: Number;
   category: String;
   subcategory: String;
-  image: any;
-  base64: string;
+  image=[];
 
-  public blobImage:Blob;
+  public blobImage: Blob;
   fileBlob: any;
 
-  constructor(private httpClient:HttpClient) {
+  constructor(private httpClient: HttpClient) {
   }
 
   ngOnInit(): void {
@@ -30,15 +28,7 @@ export class AddProductsComponent implements OnInit {
 
   handleUpload(event: any) {
     const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      console.log(reader.result);
-      const base64Data = reader.result;
-      // @ts-ignore
-      this.base64 = base64Data;
-      //this.convertBase64ToBlob(base64Data);
-    }
+    this.convertImageToBase64(file);
   }
 
   private convertBase64ToBlob(base64Image: string) {
@@ -49,7 +39,7 @@ export class AddProductsComponent implements OnInit {
     for (let i = 0; i < decodedData.length; ++i) {
       uInt8Array[i] = decodedData.charCodeAt(i);
     }
-   this.blobImage = new Blob([uInt8Array], {type: imageType});
+    this.blobImage = new Blob([uInt8Array], {type: imageType});
     // blob to base64
     this.blobToBase64(this.blobImage).then((res) => {
       this.srcImage = res;
@@ -65,20 +55,34 @@ export class AddProductsComponent implements OnInit {
     });
   }
 
-  save(){
+  save() {
     const data = {
       productName: this.productName,
       price: this.price,
       category: this.category,
       subcategory: this.subcategory,
-      image: this.base64
+      image: this.image
     }
     console.log(data);
     this.httpClient.post<any>(this.url, data).subscribe(data => {
       alert("User Registration is done successfully")
-    },(e)=>{
+    }, (e) => {
       alert("Something went wrong");
     })
   }
 
+  async convertImageToBase64(theFile: any) {
+    const reader = new FileReader();
+    reader.readAsDataURL(theFile);
+    reader.onload = () => {
+      const base64Data = reader.result;
+      // @ts-ignore
+      this.image.push(base64Data)
+    }
+  }
+
+  removeImage(i: number) {
+   this.image.splice(i,1);
+   console.log(this.image)
+  }
 }

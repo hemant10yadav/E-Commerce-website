@@ -1,25 +1,29 @@
 <div class="container">
-    <div>
-      <label>Product Name</label>
-      <input [(ngModel)]="productName">
-    </div>
-    <div>
-      <label>Product Category</label>
-      <input [(ngModel)]="category">
-    </div>
-    <div>
-      <label>Product Sub Category</label>
-      <input [(ngModel)]="subcategory">
-    </div>
-    <div>
-      <label>Price</label>
-      <input type="number" [(ngModel)]="price">
-    </div>
-    <div>
-      <label>Image </label>
-      <input type="file" (change)="handleUpload($event)">
-    </div>
+  <div>
+    <label>Product Name</label>
+    <input [(ngModel)]="productName">
+  </div>
+  <div>
+    <label>Product Category</label>
+    <input [(ngModel)]="category">
+  </div>
+  <div>
+    <label>Product Sub Category</label>
+    <input [(ngModel)]="subcategory">
+  </div>
+  <div>
+    <label>Price</label>
+    <input type="number" [(ngModel)]="price">
+  </div>
+  <div>
+    <label>Image </label>
+    <input type="file" (change)="handleUpload($event)">
+  </div>
   <button class="btn btn-danger" (click)="save()">save</button>
-
-  <img src="{{srcImage}}">
+  <ng-container *ngIf="image">
+    <div *ngFor="let src of image; let i = index">
+      <img width="400" height="400" src="{{src}}">
+      <button class="btn" (click)="removeImage(i)" >cancel</button>
+    </div>
+  </ng-container>
 </div>
