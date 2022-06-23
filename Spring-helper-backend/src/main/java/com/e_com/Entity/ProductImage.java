@@ -9,6 +9,7 @@ public class ProductImage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @Column(name="image_data")
@@ -42,7 +43,7 @@ public class ProductImage {
     public String toString() {
         return "ProductImage{" +
                 "id=" + id +
-                ", imageData=" + imageData +
+                ", imageData='" + imageData + '\'' +
                 '}';
     }
 }

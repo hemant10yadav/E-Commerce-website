@@ -2,7 +2,9 @@ package com.e_com.Entity;
 
 import javax.persistence.*;
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -10,8 +12,8 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
-    private int productId;
+    @Column(name = "id")
+    private int id;
 
     @Column(name = "product_name")
     private String productName;
@@ -24,15 +26,15 @@ public class Product {
     @Column(name = "price")
     private int price;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "image_id")
-    private ProductImage productImage;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
+    private List<ProductImage> productImage;
 
     public Product() {
     }
 
-    public Product(int productId, String productName, String category, String subcategory, int price, ProductImage productImage) {
-        this.productId = productId;
+    public Product(int id, String productName, String category, String subcategory, int price, List<ProductImage> productImage) {
+        this.id = id;
         this.productName = productName;
         this.category = category;
         this.subcategory = subcategory;
@@ -40,12 +42,12 @@ public class Product {
         this.productImage = productImage;
     }
 
-    public int getProductId() {
-        return productId;
+    public int getId() {
+        return id;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getProductName() {
@@ -80,23 +82,19 @@ public class Product {
         this.price = price;
     }
 
-    public ProductImage getProductImage() {
+    public List<ProductImage> getProductImage() {
         return productImage;
     }
 
-    public void setProductImage(ProductImage productImage) {
+    public void setProductImage(List<ProductImage> productImage) {
         this.productImage = productImage;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "productId=" + productId +
-                ", productName='" + productName + '\'' +
-                ", category='" + category + '\'' +
-                ", subcategory='" + subcategory + '\'' +
-                ", price=" + price +
-                ", productImage=" + productImage +
-                '}';
+    public void addImage(ProductImage theProductImage) {
+        if (productImage == null) {
+            productImage = new ArrayList<>();
+        }
+        productImage.add(theProductImage);
+
     }
 }

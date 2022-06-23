@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 @RestController
 @CrossOrigin
@@ -21,17 +22,20 @@ public class ProductController {
 
     @PostMapping("/save")
     public void saveProduct(@RequestBody RestProduct restProduct) {
-
-
-        ProductImage theProductImage = new ProductImage();
-        theProductImage.setImageData(restProduct.getImage());
+        System.out.println(restProduct);
 
         Product theProduct = new Product();
+
+        Iterator<String> iterate = restProduct.getImage().iterator();
+        while (iterate.hasNext()){
+            ProductImage theProductImage = new ProductImage();
+            theProductImage.setImageData(iterate.next());
+            theProduct.addImage(theProductImage);
+        }
         theProduct.setProductName(restProduct.getProductName());
         theProduct.setCategory(restProduct.getCategory());
         theProduct.setSubcategory(restProduct.getSubcategory());
         theProduct.setPrice(restProduct.getPrice());
-        theProduct.setProductImage(theProductImage);
 
         System.out.println("enter products===>>" + theProduct);
 
