@@ -6,10 +6,10 @@ import com.e_com.RestClass.RestProduct;
 import com.e_com.Sevice.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.sql.SQLException;
 import java.util.Iterator;
 
 @RestController
@@ -20,16 +20,18 @@ public class ProductController {
     @Autowired
     private ProductServiceImpl productServiceImpl;
 
+
     @PostMapping("/save")
-    public void saveProduct(@RequestBody RestProduct restProduct) {
-        System.out.println(restProduct);
+    public void saveProduct(@RequestBody RestProduct restProduct) throws SQLException, UnsupportedEncodingException {
+        //System.out.println(restProduct);
 
         Product theProduct = new Product();
 
         Iterator<String> iterate = restProduct.getImage().iterator();
         while (iterate.hasNext()){
             ProductImage theProductImage = new ProductImage();
-            theProductImage.setImageData(iterate.next());
+            byte[] hem = iterate.next().getBytes(StandardCharsets.UTF_8);
+            theProductImage.setImageData(hem);
             theProduct.addImage(theProductImage);
         }
         theProduct.setProductName(restProduct.getProductName());
@@ -38,7 +40,6 @@ public class ProductController {
         theProduct.setPrice(restProduct.getPrice());
 
         System.out.println("enter products===>>" + theProduct);
-
         this.productServiceImpl.saveProduct(theProduct);
     }
 

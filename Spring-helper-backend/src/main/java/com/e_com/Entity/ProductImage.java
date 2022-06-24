@@ -2,6 +2,7 @@ package com.e_com.Entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @Entity
 @Table(name = "product_images")
@@ -13,12 +14,12 @@ public class ProductImage {
     private int id;
 
     @Column(name="image_data")
-    private String imageData;
+    private byte[] imageData;
 
     public ProductImage() {
     }
 
-    public ProductImage(int id, String imageData) {
+    public ProductImage(int id, byte[] imageData) {
         this.id = id;
         this.imageData = imageData;
     }
@@ -31,11 +32,11 @@ public class ProductImage {
         this.id = id;
     }
 
-    public String getImageData() {
+    public byte[] getImageData() {
         return imageData;
     }
 
-    public void setImageData(String imageData) {
+    public void setImageData(byte[] imageData) {
         this.imageData = imageData;
     }
 
@@ -43,7 +44,7 @@ public class ProductImage {
     public String toString() {
         return "ProductImage{" +
                 "id=" + id +
-                ", imageData='" + imageData + '\'' +
+                ", imageData='" + Arrays.toString(imageData) + '\'' +
                 '}';
     }
 }
