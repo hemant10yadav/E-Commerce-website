@@ -26,7 +26,7 @@ public class Product {
     @Column(name = "price")
     private int price;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     private List<ProductImage> productImage;
 
@@ -96,5 +96,17 @@ public class Product {
         }
         productImage.add(theProductImage);
 
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", productName='" + productName + '\'' +
+                ", category='" + category + '\'' +
+                ", subcategory='" + subcategory + '\'' +
+                ", price=" + price +
+                ", productImage=" + productImage +
+                '}';
     }
 }

@@ -1,12 +1,17 @@
 package com.e_com.DAO;
 
 import com.e_com.Entity.Product;
+import com.e_com.Entity.ProductImage;
+import com.e_com.RestClass.RestProduct;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -35,6 +40,8 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<Product> getProducts() {
-        return null;
+        Session currentSession = sessionFactory.getCurrentSession();
+        System.out.println("query===> true");
+        return currentSession.createQuery("from Product", Product.class).list();
     }
 }

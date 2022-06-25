@@ -9,7 +9,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AddProductsComponent implements OnInit {
 
-  url = 'http://localhost:8080/Spring-helper-backend/products/save';
+  url = 'http://localhost:8080/Spring-helper-backend/api/products';
   public srcImage: any;
   productName: String;
   price: Number;
@@ -65,6 +65,7 @@ export class AddProductsComponent implements OnInit {
     }
     console.log(data);
     this.httpClient.post<any>(this.url, data).subscribe(data => {
+      console.log(data);
       alert("User Registration is done successfully")
     }, (e) => {
       alert("Something went wrong");

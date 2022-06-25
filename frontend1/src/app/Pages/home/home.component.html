@@ -1,0 +1,12 @@
+<div class="container-xl">
+  <div class="row" *ngIf="product">
+    <ng-container *ngFor="let theProduct of product">
+    <div class="col-xl-3">
+      <div class="bg-primary">
+        <h4>{{theProduct.productName}}</h4>
+        <img width="100" height="100" src="{{theProduct.image[0]}}">
+      </div>
+    </div>
+    </ng-container>
+  </div>
+</div>

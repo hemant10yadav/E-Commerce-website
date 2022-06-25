@@ -3,9 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import {SignupPageComponent} from "./Pages/signup-page/signup-page.component";
 import {LoginPageComponent} from "./Pages/login-page/login-page.component";
 import {AddProductsComponent} from "./Pages/add-products/add-products.component";
+import {HomeComponent} from "./Pages/home/home.component";
 
 const routes: Routes = [
 
+  {
+    path: 'home',
+    component: HomeComponent
+  },
   {
     path: 'signup',
   component: SignupPageComponent
