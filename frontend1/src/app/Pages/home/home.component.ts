@@ -8,15 +8,15 @@ import {HttpServiceService} from "../../services/http-service.service";
 })
 export class HomeComponent implements OnInit {
 
-  public product:[any];
+  public products:[any];
 
 
   constructor(private httpService :HttpServiceService) { }
 
   ngOnInit(): void {
     this.httpService.httpGetProducts().subscribe((data)=> {
-      this.product = data;
-      console.log(this.product);
+      this.products = data;
+      console.log(this.products);
     })
   }
 

@@ -1,0 +1,41 @@
+======Products table======
+	1.id
+	2.Product name
+	3.Category
+	4.SubCategory
+	5.Price
+	6.description
+	7.Gender
+	8.Brand
+
+======Users========
+	1.id
+	2.First name
+	3.Last name
+	4.Username
+	6.email
+	7.password
+
+========images=====
+	1.id
+	2.image data
+	3.product id
+	
+========comments=====
+	1.id
+	2.product_id
+	3.user_id
+	4.comment
+	5.date
+	6.time
+	
+=========wishlist======
+    1.id
+	2.user_id
+	3.product_id
+	
+	
+========Cart=======
+	1.id
+	2.user_id
+	3.product_id

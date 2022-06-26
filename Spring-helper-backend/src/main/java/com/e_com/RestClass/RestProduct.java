@@ -8,16 +8,19 @@ public class RestProduct {
     private String category;
     private String subcategory;
     private int price;
+
+    private String description;
     private ArrayList<String> image;
 
     public RestProduct() {
     }
 
-    public RestProduct(String productName, String category, String subcategory, int price, ArrayList<String> image) {
+    public RestProduct(String productName, String category, String subcategory, int price, String description, ArrayList<String> image) {
         this.productName = productName;
         this.category = category;
         this.subcategory = subcategory;
         this.price = price;
+        this.description = description;
         this.image = image;
     }
 
@@ -53,6 +56,14 @@ public class RestProduct {
         this.price = price;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public ArrayList<String> getImage() {
         return image;
     }
@@ -68,6 +79,7 @@ public class RestProduct {
                 ", category='" + category + '\'' +
                 ", subcategory='" + subcategory + '\'' +
                 ", price=" + price +
+                ", description='" + description + '\'' +
                 ", image=" + image +
                 '}';
     }

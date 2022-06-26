@@ -26,6 +26,9 @@ public class Product {
     @Column(name = "price")
     private int price;
 
+    @Column(name = "description")
+    private String  description;
+
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     private List<ProductImage> productImage;
@@ -33,13 +36,22 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, String productName, String category, String subcategory, int price, List<ProductImage> productImage) {
+    public Product(int id, String productName, String category, String subcategory, int price, String description, List<ProductImage> productImage) {
         this.id = id;
         this.productName = productName;
         this.category = category;
         this.subcategory = subcategory;
         this.price = price;
+        this.description = description;
         this.productImage = productImage;
+    }
+
+    public void addImage(ProductImage theProductImage) {
+        if (productImage == null) {
+            productImage = new ArrayList<>();
+        }
+        productImage.add(theProductImage);
+
     }
 
     public int getId() {
@@ -82,20 +94,20 @@ public class Product {
         this.price = price;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public List<ProductImage> getProductImage() {
         return productImage;
     }
 
     public void setProductImage(List<ProductImage> productImage) {
         this.productImage = productImage;
-    }
-
-    public void addImage(ProductImage theProductImage) {
-        if (productImage == null) {
-            productImage = new ArrayList<>();
-        }
-        productImage.add(theProductImage);
-
     }
 
     @Override
@@ -106,6 +118,7 @@ public class Product {
                 ", category='" + category + '\'' +
                 ", subcategory='" + subcategory + '\'' +
                 ", price=" + price +
+                ", description='" + description + '\'' +
                 ", productImage=" + productImage +
                 '}';
     }

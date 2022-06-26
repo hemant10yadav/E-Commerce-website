@@ -1,29 +1,48 @@
 <div class="container">
-  <div>
-    <label>Product Name</label>
-    <input [(ngModel)]="productName">
-  </div>
-  <div>
-    <label>Product Category</label>
-    <input [(ngModel)]="category">
-  </div>
-  <div>
-    <label>Product Sub Category</label>
-    <input [(ngModel)]="subcategory">
-  </div>
-  <div>
-    <label>Price</label>
-    <input type="number" [(ngModel)]="price">
-  </div>
-  <div>
-    <label>Image </label>
-    <input type="file" (change)="handleUpload($event)">
-  </div>
-  <button class="btn btn-danger" (click)="save()">save</button>
-  <ng-container *ngIf="image">
-    <div *ngFor="let src of image; let i = index">
-      <img width="400" height="400" src="{{src}}">
-      <button class="btn" (click)="removeImage(i)" >cancel</button>
+  <div class="form-group mt-4">
+    <div>
+      <label for="productName">Product Name</label><label class="text-danger ms-1">*</label>
+      <input type="text" class="form-control form-control-lg shadow-none" id="productName" [(ngModel)]="productName">
     </div>
-  </ng-container>
+    <div class="mt-3">
+      <label for="category">Product Category</label><label class="text-danger ms-1">*</label>
+      <select class=" shadow-none form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="category"  [(ngModel)]="category">
+        <option selected>select category</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Life style product">Life style product</option>
+        <option value="Stationary">Stationary</option>
+        <option value="Others">Others</option>
+      </select>
+    </div>
+    <div class="mt-3">
+      <label for="subcategory">Product Subcategory</label><label class="text-danger ms-1">*</label>
+      <select class=" shadow-none form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="subcategory"  [(ngModel)]="subcategory">
+        <option selected>select subcategory</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Life style product">Life style product</option>
+        <option value="Stationary">Stationary</option>
+        <option value="Others">Others</option>
+      </select>
+    </div>
+    <div class="mt-3">
+      <label for="price">Price</label><label class="text-danger ms-1">*</label>
+      <div class="input-group input-group-lg">
+      <span class="input-group-text">
+        <img src="assets/icons/icons8-rupee-material-outlined-16.png">
+      </span>
+        <input type="number" class="form-control shadow-none" id="price" [(ngModel)]="price">
+      </div>
+    </div>
+    <div class="my-3">
+      <label>Image</label><label class="text-danger ms-1">*</label>
+      <input type="file" class="form-control form-control-lg shadow-none" (change)="handleUpload($event)">
+    </div>
+  </div>
+  <div *ngIf="image" class="mb-3">
+    <span *ngFor="let src of image; let i = index">
+      <img width="250" height="250" src="{{src}}">
+     <!-- <i class="bi bi-" (click)="removeImage(i)"></i>-->
+    </span>
+  </div>
+  <button class="btn btn-danger btn-lg" (click)="save()">save</button>
 </div>

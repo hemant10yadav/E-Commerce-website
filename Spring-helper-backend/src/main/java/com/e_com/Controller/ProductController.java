@@ -38,6 +38,7 @@ public class ProductController {
         theProduct.setCategory(restProduct.getCategory());
         theProduct.setSubcategory(restProduct.getSubcategory());
         theProduct.setPrice(restProduct.getPrice());
+        theProduct.setDescription(restProduct.getDescription());
 
         System.out.println("enter products===>>" + theProduct);
         this.productServiceImpl.saveProduct(theProduct);
@@ -60,6 +61,7 @@ public class ProductController {
             tempRestProduct.setCategory(theProduct.getCategory());
             tempRestProduct.setSubcategory(theProduct.getSubcategory());
             tempRestProduct.setPrice(theProduct.getPrice());
+            tempRestProduct.setDescription(theProduct.getDescription());
             tempRestProduct.setImage(imagesString);
             restProducts.add(tempRestProduct);
         }
