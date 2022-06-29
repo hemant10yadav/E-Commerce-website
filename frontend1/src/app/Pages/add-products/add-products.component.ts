@@ -11,14 +11,24 @@ export class AddProductsComponent implements OnInit {
 
   url = 'http://localhost:8080/Spring-helper-backend/api/products';
   public srcImage: any;
-  productName: String;
-  price: Number;
-  category: String;
-  subcategory: String;
-  image=[];
-
+  productName: string;
+  price: number;
+  category: string;
+  subcategory: string;
+  description: string;
+  image = [];
+  imageName = [];
+  subCategoryArray: Array<String>;
+  subcategoryOption = {
+    Others: ['others'],
+    Stationary: ['Book', 'Pen', 'Pencil', 'PencilBox'],
+    LifeStyle: ['Trouser', 'T-shirt', 'Shorts', 'Top', 'Shoes', 'Slippers'],
+    Electronics: ['LED', 'Laptop', 'Mobile phone', 'Watch', 'Headphone', 'Other']
+  };
+  public categoryError = false;
   public blobImage: Blob;
   fileBlob: any;
+  public imageCount = 0;
 
   constructor(private httpClient: HttpClient) {
   }
@@ -27,8 +37,13 @@ export class AddProductsComponent implements OnInit {
   }
 
   handleUpload(event: any) {
-    const file = event.target.files[0];
-    this.convertImageToBase64(file);
+    if (this.imageCount < 5) {
+      const file = event.target.files[0];
+      // @ts-ignore
+      this.imageName.push(file.name);
+      this.convertImageToBase64(file);
+      this.imageCount++;
+    }
   }
 
   private convertBase64ToBlob(base64Image: string) {
@@ -61,7 +76,8 @@ export class AddProductsComponent implements OnInit {
       price: this.price,
       category: this.category,
       subcategory: this.subcategory,
-      image: this.image
+      image: this.image,
+      description: this.description
     }
     console.log(data);
     this.httpClient.post<any>(this.url, data).subscribe(data => {
@@ -83,7 +99,24 @@ export class AddProductsComponent implements OnInit {
   }
 
   removeImage(i: number) {
-   this.image.splice(i,1);
-   console.log(this.image)
+    this.image.splice(i, 1);
+    this.imageName.splice(i, 1);
+    this.imageCount--;
+  }
+
+  checkCategory(type: String) {
+    if (type === 'Others') {
+      this.subCategoryArray = ['Others'];
+      this.categoryError = false;
+    } else if (type === 'Stationary') {
+      this.subCategoryArray = this.subcategoryOption.Stationary;
+      this.categoryError = false;
+    } else if (type === 'Electronics') {
+      this.subCategoryArray = this.subcategoryOption.Electronics;
+      this.categoryError = false;
+    } else if (type === 'Life style product') {
+      this.subCategoryArray = this.subcategoryOption.LifeStyle;
+      this.categoryError = false;
+    } else this.categoryError = true;
   }
 }
