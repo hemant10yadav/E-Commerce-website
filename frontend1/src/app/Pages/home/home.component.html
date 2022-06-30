@@ -8,9 +8,20 @@
         <div class="mt-2 text-center px-2">
           <h6 class="text-truncate">{{product.productName}}</h6>
         </div>
-        <div class="card-footer d-flex align-items-center justify-content-center text-truncate">
+        <div class="card-footer d-flex align-items-center">
           <img height="16" src="assets/icons/icons8-rupee-material-outlined-16.png">
-          <small class="text-muted">{{product.price}}</small>
+          <label class="text-muted text-truncate d-block">{{product.price}}</label>
+          <div class="ms-auto">
+            <span>
+              <img src="assets/icons/icons8-shopping-cart-24.png">
+            </span>
+            <span>
+              <img height="24" src="assets/icons/wishlist-added.png">
+            </span>
+            <!--<span>
+              <img height="24" src="assets/icons/wishlist-none.png">
+            </span>-->
+          </div>
         </div>
       </div>
     </div>
