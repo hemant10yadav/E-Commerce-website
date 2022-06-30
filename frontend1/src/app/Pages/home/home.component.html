@@ -1,13 +1,15 @@
-<div class="container-xl">
+<div class="container">
   <div *ngIf="products" class="row">
-    <div *ngFor="let product of products" class="col-xxl-2 col-xl-3 col-md-4 col-sm-2">
-      <div class="card">
-        <img style="width: 13rem; height: 13rem" src="{{product.image[0]}}" class="card-img-top" alt="...">
-        <div class="card-body">
+    <div *ngFor="let product of products" class="col-6 col-sm-4 col-md-3 col-xl-3 col-xxl-2">
+      <div class="card cursor-pointer m-1">
+        <div class="card-img d-flex justify-content-center">
+          <img class="responsive-img" src="{{product.image[0]}}">
+        </div>
+        <div class="mt-2 text-center px-2">
           <h6 class="text-truncate">{{product.productName}}</h6>
         </div>
-        <div class="card-footer text-center">
-          <img src="assets/icons/icons8-rupee-material-outlined-16.png">
+        <div class="card-footer d-flex align-items-center justify-content-center text-truncate">
+          <img height="16" src="assets/icons/icons8-rupee-material-outlined-16.png">
           <small class="text-muted">{{product.price}}</small>
         </div>
       </div>
