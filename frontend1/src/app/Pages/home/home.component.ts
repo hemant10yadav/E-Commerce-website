@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpServiceService} from "../../services/http-service.service";
+import {HttpService} from "../../services/http.service";
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   public products:[any];
 
 
-  constructor(private httpService :HttpServiceService) { }
+  constructor(private httpService :HttpService) { }
 
   ngOnInit(): void {
     this.httpService.httpGetProducts().subscribe((data)=> {

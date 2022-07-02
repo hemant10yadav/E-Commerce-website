@@ -6,7 +6,7 @@ import {Config} from "ngx-ui-loader/lib/utils/interfaces";
 @Injectable({
   providedIn: 'root'
 })
-export class HttpServiceService {
+export class HttpService {
 
   productUrl = 'http://localhost:8080/Spring-helper-backend/api/products'
 

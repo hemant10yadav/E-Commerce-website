@@ -4,13 +4,14 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FormsModule} from "@angular/forms";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {LoginPageComponent} from './Pages/login-page/login-page.component';
 import {SignupPageComponent} from "./Pages/signup-page/signup-page.component";
 import {SharedComponentModule} from "./components/shared-components/shared-component.module";
-import {NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoaderRouterModule} from "ngx-ui-loader";
+import {NgxUiLoaderHttpModule, NgxUiLoaderModule} from "ngx-ui-loader";
 import {AddProductsComponent} from "./Pages/add-products/add-products.component";
 import {HomeComponent} from "./Pages/home/home.component";
+import {UserPageComponent} from "./Pages/user-page/user-page.component";
 
 @NgModule({
   declarations: [
@@ -18,8 +19,8 @@ import {HomeComponent} from "./Pages/home/home.component";
     SignupPageComponent,
     LoginPageComponent,
     AddProductsComponent,
-    HomeComponent
-
+    HomeComponent,
+    UserPageComponent
 
   ],
   imports: [
@@ -30,7 +31,7 @@ import {HomeComponent} from "./Pages/home/home.component";
     SharedComponentModule,
     NgxUiLoaderModule,
     NgxUiLoaderHttpModule.forRoot({
-      showForeground:true,
+      showForeground: true,
     }),
   ],
   providers: [],
