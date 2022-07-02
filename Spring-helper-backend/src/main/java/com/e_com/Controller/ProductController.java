@@ -2,8 +2,10 @@ package com.e_com.Controller;
 
 import com.e_com.Entity.Product;
 import com.e_com.Entity.ProductImage;
+import com.e_com.Entity.User;
 import com.e_com.RestClass.RestProduct;
 import com.e_com.Sevice.ProductServiceImpl;
+import com.e_com.Sevice.UserServiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +22,9 @@ public class ProductController {
 
     @Autowired
     private ProductServiceImpl productServiceImpl;
+
+    @Autowired
+    private UserServiceDao userServiceDao;
 
 
     @PostMapping()
@@ -68,5 +73,9 @@ public class ProductController {
         System.out.println(restProducts.size());
         return  restProducts;
     }
-
+    @GetMapping("/user/{theId}")
+    public User getUser(@PathVariable int theId) {
+        System.out.println("theid" + theId);
+        return this.userServiceDao.getUser(theId);
+    }
 }

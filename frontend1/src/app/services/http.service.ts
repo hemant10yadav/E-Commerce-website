@@ -7,6 +7,7 @@ import {Config} from "ngx-ui-loader/lib/utils/interfaces";
   providedIn: 'root'
 })
 export class HttpService {
+token:string;
 
   productUrl = 'http://localhost:8080/Spring-helper-backend/api/products'
 
@@ -18,6 +19,10 @@ export class HttpService {
       .pipe(map((response: any) => response));
   }
 
+  httpGetUser() : Observable<any>{
+    return  this.httpClient.get('http://localhost:8080/Spring-helper-backend/api/products/user/59')
+      .pipe(map((response: any) => response));
+  }
 
   /*get(url: string): Observable<any> {
     return this.httpClient.get(this.getRestApiUrl() + url)

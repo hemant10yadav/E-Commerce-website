@@ -2,6 +2,7 @@ package com.e_com.DAO;
 
 import java.util.List;
 
+import com.e_com.Entity.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,9 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getUser(int theId) {
-        return null;
+        Session currentSession = sessionFactory.getCurrentSession();
+        System.out.println("inide quesry");
+        return currentSession.get(User.class, theId);
     }
 
     @Override

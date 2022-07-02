@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-page',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,
+              private activatedRoute:ActivatedRoute) { }
+
 
   ngOnInit(): void {
   }
 
+  openUserProfile() {
+    this.router.navigate(['/user/user-profile']);
+  }
 }

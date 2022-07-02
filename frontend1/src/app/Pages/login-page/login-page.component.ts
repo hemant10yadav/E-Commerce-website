@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {HttpService} from "../../services/http.service";
 
 @Component({
   selector: 'app-login-page',
@@ -18,16 +19,19 @@ export class LoginPageComponent implements OnInit {
   public loginDisable = true;
   public message:String;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+              private httpService:HttpService) {
   }
 
   ngOnInit(): void {
   }
 
   login() {
-    this.httpClient.post<any>(this.url, this.data).subscribe(data => {
-      this.token = data;
+    this.httpClient.post<any>(this.url, this.data ,{headers:{skip:"true"}}).subscribe(data => {
+      this.token = data.token;
       console.log(this.token);
+      this.httpService.token = this.token;
+      localStorage.setItem('token', this.token)
       alert("Login Successfully")
     }, (e) => {
       const error = e.error;

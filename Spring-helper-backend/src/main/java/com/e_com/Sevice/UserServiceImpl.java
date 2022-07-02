@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserServiceDao {
 	@Transactional
 	public User getUser(int theId) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.getUser(theId);
 	}
 
 	@Override
