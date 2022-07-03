@@ -1,7 +1,7 @@
 <div class="row mx-5">
   <div class="d-none d-xl-block col-xl-7">
     <div class="m-0 p-0 d-flex justify-content-center">
-      <img draggable="false" class="img-fluid" src="assets/images/background/gif/cart.gif">
+      <img class="img-fluid" draggable="false" src="assets/images/background/gif/cart.gif">
     </div>
   </div>
   <div class="col col-xl-5 text-center rounded-3 mt-5">
@@ -12,26 +12,27 @@
       </div>
       <div class="input-group input-group-lg">
         <span class="input-group-text bg-white" id="inputGroup-sizing-lg">
-          <img draggable="false" height="30" width="30"
-               src="assets/icons/user.gif">
+          <img draggable="false" height="30" src="assets/icons/user.gif"
+               width="30">
         </span>
-        <input type="email" class="form-control shadow-none"
-               placeholder="Username" name="email" [(ngModel)]="data.username" (ngModelChange)="checkValue()">
+        <input (ngModelChange)="checkValue()" [(ngModel)]="data.username"
+               class="form-control shadow-none" name="email" placeholder="Username" type="email">
       </div>
       <div class="input-group input-group-lg mt-4">
         <span class="input-group-text bg-white">
-          <img draggable="false" height="30" width="30"
-               src="assets/icons/key-password.gif">
+          <img draggable="false" height="30" src="assets/icons/key-password.gif"
+               width="30">
         </span>
-        <input type="password" class="form-control shadow-none" aria-label="Sizing example input"
-               name="password" [(ngModel)]="data.password" placeholder="Password" (ngModelChange)="checkValue()">
+        <input (ngModelChange)="checkValue()" [(ngModel)]="data.password" aria-label="Sizing example input"
+               class="form-control shadow-none" name="password" placeholder="Password" type="password">
       </div>
       <div class="text-start mt-2">
         <a class="fs-14 cursor-pointer">Forgot password ?</a>
       </div>
       <div>
-        <button type="submit" [disabled]="loginDisable" class="btn app-bg-color mt-3 w-100 text-white shadow-none"
-                (click)="login()">Login
+        <button (click)="login()" [disabled]="loginDisable"
+                class="btn app-bg-color mt-3 w-100 text-white shadow-none"
+                type="submit">Login
         </button>
       </div>
     </form>
@@ -47,5 +48,4 @@
       <label>Create a new account ?<a class="ms-2" href="signup">Signup</a></label>
     </div>
   </div>
-
 </div>

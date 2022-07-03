@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {HttpService} from "../../services/http.service";
-import {LoginSignUpService} from "../../services/login-signUp.service";
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { HttpService } from '../../services/http.service';
+import { LoginSignUpService } from '../../services/login-signUp.service';
 
 @Component({
   selector: 'app-signup-page',
   templateUrl: './signup-page.component.html',
-  styleUrls: ['./signup-page.component.scss']
+  styleUrls: ['./signup-page.component.scss'],
 })
 export class SignupPageComponent implements OnInit {
   data = {
@@ -15,23 +15,23 @@ export class SignupPageComponent implements OnInit {
     email: null,
     password: null,
     dob: null,
-    username: null
-  }
+    username: null,
+  };
   confirmPassword: string;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  constructor(private loginSignUpService:LoginSignUpService) {
-  }
+  constructor(private loginSignUpService: LoginSignUpService) {}
 
-  submit(data:any) {
+  submit(data: any) {
     console.log(data);
-   this.loginSignUpService.doSignUp(this.data).subscribe(data => {
-      alert("User Registration is done successfully")
-    },(e)=>{
-      alert("Something went wrong");
-    })
+    this.loginSignUpService.doSignUp(this.data).subscribe(
+      data => {
+        alert('User Registration is done successfully');
+      },
+      e => {
+        alert('Something went wrong');
+      }
+    );
   }
-
 }

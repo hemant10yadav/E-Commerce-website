@@ -1,6 +1,8 @@
 package com.e_com.Entity;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,32 +12,42 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
 
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	private int id;
-	
-	@Column(name = "first_name")
-	private String firstName;
-	
-	@Column(name = "last_name")
-	private String lastName;
-	
-	@Column(name = "username")
-	private String username;
-	
-	@Column(name = "email")
-	private String email;
-	
-	@Column(name = "dob")
-	private Date dob;
-	
-	@Column(name = "password")
-	private String password;
-	
-	public User() {}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "created_on")
+    private final LocalDateTime date = LocalDateTime.now();
+
+    @Column(name = "password")
+    private String password;
+
+    public User() {
+    }
+
+	public User(int id, String firstName, String lastName, String username, String email, String password) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+	}
 
 	public int getId() {
 		return id;
@@ -77,12 +89,8 @@ public class User {
 		this.email = email;
 	}
 
-	public Date getDob() {
-		return dob;
-	}
-
-	public void setDob(Date dob) {
-		this.dob = dob;
+	public LocalDateTime getDate() {
+		return date;
 	}
 
 	public String getPassword() {
@@ -94,9 +102,15 @@ public class User {
 	}
 
 	@Override
-	public String toString() {
-		return "Users [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
-				+ ", email=" + email + ", dob=" + dob + ", password=" + password + "]";
-	}
-	
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", date='" + date + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

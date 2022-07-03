@@ -1,45 +1,43 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {SignupPageComponent} from "./Pages/signup-page/signup-page.component";
-import {LoginPageComponent} from "./Pages/login-page/login-page.component";
-import {AddProductsComponent} from "./Pages/add-products/add-products.component";
-import {HomeComponent} from "./Pages/home/home.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { SignupPageComponent } from './Pages/signup-page/signup-page.component';
+import { LoginPageComponent } from './Pages/login-page/login-page.component';
+import { AddProductsComponent } from './Pages/add-products/add-products.component';
 
 const routes: Routes = [
   {
     path: 'user',
-    loadChildren: () => import('./Pages/user-page/user-page.module').then(m => m.UserPageModule)
+    loadChildren: () =>
+      import('./Pages/user-page/user-page.module').then(m => m.UserPageModule),
   },
   {
     path: 'home',
-    component: HomeComponent
+    loadChildren: () =>
+      import('./Pages/home/home.module').then(m => m.HomeModule),
   },
   {
     path: 'signup',
-    component: SignupPageComponent
+    component: SignupPageComponent,
   },
 
   {
     path: 'login',
-    component: LoginPageComponent
+    component: LoginPageComponent,
   },
-
 
   {
     path: 'add-products',
-    component: AddProductsComponent
+    component: AddProductsComponent,
   },
   {
     path: '',
     redirectTo: '',
-    pathMatch: 'full'
-  }
-
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

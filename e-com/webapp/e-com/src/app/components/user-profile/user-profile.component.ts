@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpService} from "../../services/http.service";
+import { HttpService } from '../../services/http.service';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit {
+  constructor(private httpService: HttpService) {}
 
-  constructor(private httpService:HttpService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   callItNow() {
-   this.httpService.httpGetUser().subscribe((re)=>{
-     console.log(re);
-   })
+    this.httpService.httpGetUser().subscribe(re => {
+      console.log(re);
+    });
   }
 }

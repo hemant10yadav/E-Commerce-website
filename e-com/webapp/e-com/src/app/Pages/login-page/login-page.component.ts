@@ -1,31 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {HttpService} from "../../services/http.service";
-import {LoginSignUpService} from "../../services/login-signUp.service";
-import {AuthService} from "../../services/auth.service";
+import { HttpClient } from '@angular/common/http';
+import { HttpService } from '../../services/http.service';
+import { LoginSignUpService } from '../../services/login-signUp.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent implements OnInit {
-
   public token = '';
   data = {
     username: '',
     password: '',
-  }
+  };
   url = 'http://localhost:8080/e-com/api/login';
   public wrongCredentials = false;
   public loginDisable = true;
-  public message:String;
+  public message: String;
 
-  constructor(private httpClient: HttpClient,
-              private httpService:HttpService,
-              private loginSignUpService:LoginSignUpService,
-              private authService:AuthService) {
-  }
+  constructor(
+    private httpClient: HttpClient,
+    private httpService: HttpService,
+    private loginSignUpService: LoginSignUpService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     console.log(this.authService.isLoggedIn());
@@ -34,18 +34,7 @@ export class LoginPageComponent implements OnInit {
   login() {
     this.loginSignUpService.doLogin(this.data);
 
-
-
-
-
-
-
-
-
-
-
-
-  /*  this.httpClient.post<any>(this.url, this.data ,{headers:{skip:"true"}}).subscribe(data => {
+    /*  this.httpClient.post<any>(this.url, this.data ,{headers:{skip:"true"}}).subscribe(data => {
       this.token = data.token;
       console.log(this.token);
       this.httpService.token = this.token;

@@ -47,7 +47,7 @@
       </div>
       <div class="my-3">
         <label class="text-muted">Image</label><label class="text-danger ms-1">*</label>
-        <input [disabled]="imageCount==5" multiple accept="image/*" type="file"
+        <input [disabled]="imageCount===5" multiple accept="image/*" type="file"
                class="form-control form-control-lg shadow-none"
                (change)="handleUpload($event)">
       </div>

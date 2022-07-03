@@ -3,6 +3,7 @@ package com.e_com.Controller;
 import com.e_com.Entity.User;
 import com.e_com.ExceptionHandler.DataBaseException;
 import com.e_com.ExceptionHandler.UserException;
+import com.e_com.RestClass.RestUser;
 import com.e_com.Sevice.UserServiceDao;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,15 +60,21 @@ public class LoginSignupController {
 	}
 
 	@PostMapping("/signup")
-	public void signupForUser(@RequestBody User theUser) {
+	public void signupForUser(@RequestBody RestUser theUser) {
 		if(theUser.getFirstName()== null || theUser.getFirstName().length()==0
 			||theUser.getLastName() == null || theUser.getLastName().length()==0
 			||theUser.getPassword() == null || theUser.getPassword().length()==0
 			||theUser.getEmail() == null || theUser.getEmail().length()==0
-			||theUser.getDob()== null){
+			||theUser.getUsername() == null || theUser.getUsername().length()==0){
 			throw new DataBaseException("field is empty");
 		} else try {
-			this.userServiceDao.saveUser(theUser);
+			User dbUser = new User();
+			dbUser.setFirstName(theUser.getFirstName());
+			dbUser.setLastName(theUser.getLastName());
+			dbUser.setPassword(theUser.getPassword());
+			dbUser.setEmail(theUser.getEmail());
+			dbUser.setUsername(theUser.getUsername());
+			this.userServiceDao.saveUser(dbUser);
 		}catch (ConstraintViolationException exc){
 			String hem=exc.getCause().getMessage();
 
