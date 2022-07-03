@@ -1,7 +1,6 @@
 package com.e_com.Entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 @Entity

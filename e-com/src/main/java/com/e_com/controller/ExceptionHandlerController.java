@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class ExceptionHandlerController {
-
     @ExceptionHandler
     public ResponseEntity<ExceptionMessage> handleException(UserException exc) {
         ExceptionMessage error = new ExceptionMessage();
@@ -19,9 +18,8 @@ public class ExceptionHandlerController {
         error.setTimestamp(System.currentTimeMillis());
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
-
     @ExceptionHandler
-    public ResponseEntity<ExceptionMessage> Exception(DataBaseException exc){
+    public ResponseEntity<ExceptionMessage> exception(DataBaseException exc){
         ExceptionMessage error = new ExceptionMessage();
         error.setStatus(HttpStatus.ALREADY_REPORTED.value());
         error.setMessage(exc.getMessage());

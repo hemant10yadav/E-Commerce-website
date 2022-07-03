@@ -12,6 +12,7 @@ export class AuthService {
   }
 
   saveUser(data: any) {
+    console.log(data);
     localStorage.setItem(this.joke, this.encryptString(data, 'tokenValue'));
   }
 
@@ -27,6 +28,7 @@ export class AuthService {
   }
 
   encryptString(data: any, key: string) {
+    console.log(AES.encrypt(data, key));
     return AES.encrypt(data, key).toString();
   }
 

@@ -16,4 +16,11 @@ export class UserProfileComponent implements OnInit {
       console.log(re);
     });
   }
+
+  callUsername(){
+    this.httpService.httpGetUsername().subscribe(re => {
+      console.log(re);
+    });
+  }
+
 }

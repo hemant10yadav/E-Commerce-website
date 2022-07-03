@@ -1,0 +1,43 @@
+
+v
+java:S1488∏"_Immediately return this expression instead of assigning it to the temporary variable "theUser".(ÒËÃ¶
+V
+java:S2789p"@Methods with an "Optional" return type should never return null.(•πÔç
+W
+java:S2789ò"@Methods with an "Optional" return type should never return null.(•πÔç
+ó
+java:S11863"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(„Æ∏¬
+ú
+java:S1186B"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(›¬˚ƒ˘ˇˇˇˇ
+ú
+java:S1186G"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ö†ò›˘ˇˇˇˇ
+ú
+java:S1186L"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(úê€±¸ˇˇˇˇ
+ó
+java:S1186~"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(éœ‡ö
+ù
+java:S1186É"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ûü‰°¸ˇˇˇˇ
+ò
+java:S1186à"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Â˛¿
+ù
+java:S1186ç"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(âπ≠ìˇˇˇˇˇ
+ò
+java:S1186í"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ìÁπÕ
+ó
+java:S1186"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ø£∆‰
+A
+java:S1168 "+Return an empty collection instead of null.(•πÔç
+A
+java:S1168%"+Return an empty collection instead of null.(•πÔç
+A
+java:S1168*"+Return an empty collection instead of null.(•πÔç
+A
+java:S1168/"+Return an empty collection instead of null.(•πÔç
+A
+java:S1168>"+Return an empty collection instead of null.(•πÔç
+A
+java:S1168\"+Return an empty collection instead of null.(•πÔç
+A
+java:S1168a"+Return an empty collection instead of null.(•πÔç
+D
+java:S1874≥"-Remove this use of "Query"; it is deprecated.(ß…ÑÍ

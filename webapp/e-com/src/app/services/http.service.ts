@@ -24,6 +24,10 @@ export class HttpService {
     return this.httpClient.get(this.urlService.userUrl + '/59')
       .pipe(map((response: any) => response));
   }
+  httpGetUsername(): Observable<any> {
+    return this.httpClient.get(this.urlService.userUrl + '/username' )
+      .pipe(map((response: any) => response));
+  }
 
 
 }

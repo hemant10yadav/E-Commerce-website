@@ -175,14 +175,10 @@ public class UserRepoImpl implements UserRepository {
 	@Override
 	@Transactional
 	public User findByUserName(String username) {
-		System.out.println("enter user repo impl" + username);
 		Session currentSession = sessionFactory.getCurrentSession();
-		System.out.println("after current session" + currentSession);
-		
 		Query<User> theQuery =
 				currentSession.createQuery("from User u where u.username = :username ",
 											User.class);
-		System.out.println("below query" );
 
 		theQuery.setParameter("username",username);
 		User theUser = theQuery.getSingleResult();

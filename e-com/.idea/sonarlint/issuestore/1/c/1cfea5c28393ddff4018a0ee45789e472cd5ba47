@@ -1,8 +1,8 @@
 
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ª¥Åıÿÿÿÿ
-ˆ
-java:S4165&"fRemove this useless assignment; "password" already holds the assigned value along all execution paths.(æõÃ´şÿÿÿÿ8½­€ œ0
-^
-java:S1854&"<Remove this useless assignment to local variable "password".(æõÃ´şÿÿÿÿ8Ì­€ œ0
-Q
-java:S1656&"/Remove or correct this useless self-assignment.(æõÃ´şÿÿÿÿ8Ì­€ œ0
+o	java:S116"SRename this field "Password" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğí¢Í8÷˜š§œ0
+T
+java:S1135
+"2Complete the task associated to this TODO comment.(ƒŠ® úÿÿÿÿ8÷˜š§œ0
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(­ ‘ˆüÿÿÿÿ8÷˜š§œ0
+U	java:S106 "9Replace this use of System.out or System.err by a logger.(˜—áú8÷˜š§œ0

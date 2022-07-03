@@ -12,16 +12,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
-
-	public JwtAuthenticationEntryPoint() {
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void commence(HttpServletRequest request, HttpServletResponse response,
-			AuthenticationException authException) throws IOException, ServletException {
-
-		response.sendError(401, "Unauthorized");
-	}
-
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response,
+                         AuthenticationException authException) throws IOException, ServletException {
+        response.sendError(401, "Unauthorized");
+    }
 }
