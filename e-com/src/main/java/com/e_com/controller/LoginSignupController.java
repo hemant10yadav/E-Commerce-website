@@ -40,22 +40,17 @@ public class LoginSignupController {
 	@PostMapping("/login")
 	public ResponseEntity<?> genrateToken(@RequestBody JwtRequest jwtRequest) throws Exception{
 		try{
-			System.out.println("try");
 			this.authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(
 							jwtRequest.getUsername(), jwtRequest.getPassword()));
-			
 		}catch(Exception exc) {
 			exc.printStackTrace();
 			throw new UserException("User not found exception");
 
 		}
-
 		UserDetails userDetails = this.customUserDetailService.
 				loadUserByUsername(jwtRequest.getUsername());
 		String token = this.jwtutil.generateToken(userDetails);
-		System.out.println(userDetails);
-		System.out.println(ResponseEntity.ok(new JwtResponse(token)));
 		return ResponseEntity.ok(new JwtResponse(token));
 	}
 
@@ -68,21 +63,11 @@ public class LoginSignupController {
 			||theUser.getUsername() == null || theUser.getUsername().length()==0){
 			throw new DataBaseException("field is empty");
 		} else try {
-			User dbUser = new User();
-			dbUser.setFirstName(theUser.getFirstName());
-			dbUser.setLastName(theUser.getLastName());
-			dbUser.setPassword(theUser.getPassword());
-			dbUser.setEmail(theUser.getEmail());
-			dbUser.setUsername(theUser.getUsername());
-			this.userServiceDao.saveUser(dbUser);
+			this.userServiceDao.saveUser(theUser);
 		}catch (ConstraintViolationException exc){
 			String hem=exc.getCause().getMessage();
-
 			throw new DataBaseException(hem);
 		}
 	}
-
-
-	
 
 }

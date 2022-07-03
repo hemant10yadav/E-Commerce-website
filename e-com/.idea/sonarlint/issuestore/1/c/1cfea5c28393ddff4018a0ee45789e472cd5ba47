@@ -1,0 +1,8 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ª¥Åıÿÿÿÿ
+ˆ
+java:S4165&"fRemove this useless assignment; "password" already holds the assigned value along all execution paths.(æõÃ´şÿÿÿÿ8½­€ œ0
+^
+java:S1854&"<Remove this useless assignment to local variable "password".(æõÃ´şÿÿÿÿ8Ì­€ œ0
+Q
+java:S1656&"/Remove or correct this useless self-assignment.(æõÃ´şÿÿÿÿ8Ì­€ œ0

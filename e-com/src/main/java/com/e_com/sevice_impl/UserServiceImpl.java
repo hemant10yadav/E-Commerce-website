@@ -2,6 +2,7 @@ package com.e_com.sevice_impl;
 
 import java.util.List;
 
+import com.e_com.rest_class.RestUser;
 import com.e_com.sevice.UserServiceDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,9 +37,14 @@ public class UserServiceImpl implements UserServiceDao {
 
 	@Override
 	@Transactional
-	public User saveUser(User theUser) {
-
-		return userDao.saveUser(theUser);
+	public void saveUser(RestUser theUser) {
+		User dbUser = new User();
+		dbUser.setFirstName(theUser.getFirstName());
+		dbUser.setLastName(theUser.getLastName());
+		dbUser.setPassword(theUser.getPassword());
+		dbUser.setEmail(theUser.getEmail());
+		dbUser.setUsername(theUser.getUsername());
+		 userDao.saveUser(dbUser);
 	}
 
 }
