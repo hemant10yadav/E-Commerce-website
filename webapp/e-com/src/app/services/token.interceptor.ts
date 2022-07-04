@@ -1,26 +1,22 @@
-import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {HttpService} from "./http.service";
-import {AuthService} from "./auth.service";
+import { Injectable } from '@angular/core';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpService } from './http.service';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
+   constructor(private authService: AuthService) {}
 
-  constructor(private authService: AuthService) {
-  }
-
-
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (request.headers.get("skip")) {
-      return next.handle(request);
-    }
-    const newRequest = request.clone({
-      setHeaders: {
-        Authorization: 'Bearer ' + this.authService.getAccessToken()
+   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+      if (request.headers.get('skip')) {
+         return next.handle(request);
       }
-    });
-    return next.handle(newRequest);
-  }
-
+      const newRequest = request.clone({
+         setHeaders: {
+            Authorization: 'Bearer ' + this.authService.getAccessToken(),
+         },
+      });
+      return next.handle(newRequest);
+   }
 }

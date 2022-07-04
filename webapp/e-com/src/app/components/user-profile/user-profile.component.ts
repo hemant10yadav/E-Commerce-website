@@ -1,26 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../services/http.service';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss'],
+   selector: 'app-user-profile',
+   templateUrl: './user-profile.component.html',
+   styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit {
-  constructor(private httpService: HttpService) {}
+   public userDetails: any;
 
-  ngOnInit(): void {}
+   constructor(
+      private httpService: HttpService,
+      private authService: AuthService,
+      private router: Router
+   ) {}
 
-  callItNow() {
-    this.httpService.httpGetUser().subscribe(re => {
-      console.log(re);
-    });
-  }
+   ngOnInit(): void {
+      this.check();
+   }
 
-  callUsername(){
-    this.httpService.httpGetUsername().subscribe(re => {
-      console.log(re);
-    });
-  }
-
+   async check() {
+      this.authService.httpGetLoggedUser().then(
+         resolve => {
+                this.userDetails = resolve;
+         },
+         reject => {
+            this.router.navigateByUrl('/home');
+         }
+      );
+   }
 }

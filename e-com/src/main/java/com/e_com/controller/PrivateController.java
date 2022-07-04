@@ -27,7 +27,7 @@ public class PrivateController {
         return this.userService.getUser(theId);
     }
 
-    @GetMapping("/user/username")
+    @GetMapping("/user")
     public RestUserData currentUserName(Principal principal) {
         return this.userService.getUserByUsername(principal.getName());
     }

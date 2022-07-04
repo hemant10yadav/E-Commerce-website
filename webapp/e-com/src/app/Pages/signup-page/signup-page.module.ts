@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
-import {AppRoutingModule} from "../../app-routing.module";
-
-
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SignupPageRoutingModule } from './signup-page-routing.module';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ]
+   declarations: [],
+   imports: [
+      CommonModule,
+      FormsModule,
+      HttpClientModule,
+      SignupPageRoutingModule,
+   ],
 })
-export class SignupPageModule { }
+export class SignupPageModule {}

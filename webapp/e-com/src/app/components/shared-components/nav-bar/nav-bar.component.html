@@ -1,8 +1,8 @@
 <div class="nav-height d-flex align-items-center w-100 app-bg-color sticky-top">
-  <div class="ms-3 h6 text-white cursor-pointer" routerLink="home">Home</div>
-  <div class="ms-3 h6 text-white cursor-pointer" routerLink="login">Login</div>
-  <div class="ms-3 h6 text-white cursor-pointer" routerLink="signup">Signup</div>
-  <div class="ms-3 h6 text-white cursor-pointer" routerLink="add-products">Add Product</div>
+  <div class="ms-3 h6 text-white cursor-pointer" [routerLink]="'/home'">Home</div>
+  <div class="ms-3 h6 text-white cursor-pointer"[routerLink]="'/login'">Login</div>
+  <div class="ms-3 h6 text-white cursor-pointer" [routerLink]="'/signup'">Signup</div>
+  <div class="ms-3 h6 text-white cursor-pointer" [routerLink]="'/add-products'">Add Product</div>
   <div *ngIf="hideSearchBar" class="float-end me-5 d-flex align-items-center ms-auto">
     <input class="search-input  form-control rounded-3 border-dark" placeholder="Search box">
     <img class="cursor-pointer border-dark search-icon rounded-end" height="38" width="38"
