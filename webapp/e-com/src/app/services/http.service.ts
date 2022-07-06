@@ -18,6 +18,12 @@ export class HttpService {
          .pipe(map((response: any) => response));
    }
 
+   httpGetProductById(id:number): Observable<any> {
+      return this.httpClient
+         .get(this.urlService.productUrl+'/' + id, this.urlService.skipInterceptor)
+         .pipe(map((response: any) => response));
+   }
+
    httpGetUser(): Observable<any> {
       return this.httpClient
          .get(this.urlService.userUrl + '/59')

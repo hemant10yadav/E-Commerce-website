@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../../services/http.service';
 import { LoginSignUpService } from '../../services/login-signUp.service';
 import { AuthService } from '../../services/auth.service';
+import {Router} from "@angular/router";
 
 @Component({
    selector: 'app-login-page',
@@ -24,14 +25,17 @@ export class LoginPageComponent implements OnInit {
       private httpClient: HttpClient,
       private httpService: HttpService,
       private loginSignUpService: LoginSignUpService,
-      private authService: AuthService
+      private authService: AuthService,
+      private router: Router
    ) {}
 
    ngOnInit(): void {
+
    }
 
-   login() {
-      this.loginSignUpService.doLogin(this.data);
+   async login() {
+      await this.loginSignUpService.doLogin(this.data);
+      await this.router.navigateByUrl('/home');
    }
 
    checkValue() {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class RestProduct {
 
+    private int id;
     private String productName;
     private String category;
     private String subcategory;
@@ -15,13 +16,23 @@ public class RestProduct {
     public RestProduct() {
     }
 
-    public RestProduct(String productName, String category, String subcategory, int price, String description, ArrayList<String> image) {
+    public RestProduct(int id, String productName, String category, String subcategory,
+                       int price, String description, ArrayList<String> image) {
+        this.id = id;
         this.productName = productName;
         this.category = category;
         this.subcategory = subcategory;
         this.price = price;
         this.description = description;
         this.image = image;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getProductName() {
@@ -75,7 +86,8 @@ public class RestProduct {
     @Override
     public String toString() {
         return "RestProduct{" +
-                "productName='" + productName + '\'' +
+                "id=" + id +
+                ", productName='" + productName + '\'' +
                 ", category='" + category + '\'' +
                 ", subcategory='" + subcategory + '\'' +
                 ", price=" + price +

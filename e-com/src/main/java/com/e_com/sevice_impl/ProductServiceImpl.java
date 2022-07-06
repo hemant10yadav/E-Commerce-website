@@ -38,8 +38,20 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProduct(int Id) {
-        return productDao.getProduct(Id);
+    public RestProduct getProduct(int id) {
+        Product theProduct = productDao.getProduct(id);
+
+        //converting blob into string
+        ArrayList<String> imagesString = new ArrayList<>();
+        List<ProductImage> productImage = theProduct.getProductImage();
+        for (ProductImage theProductImage : productImage) {
+            String str = new String(theProductImage.getImageData(), StandardCharsets.UTF_8);
+            imagesString.add(str);
+        }
+        return new RestProduct(theProduct.getId(), theProduct.getProductName(),
+                theProduct.getCategory(), theProduct.getSubcategory(),
+                theProduct.getPrice(), theProduct.getDescription(),
+                imagesString);
     }
 
     @Override
@@ -48,12 +60,15 @@ public class ProductServiceImpl implements ProductService {
         ArrayList<RestProduct> restProducts = new ArrayList<>();
         for (Product theProduct : products) {
             RestProduct tempRestProduct = new RestProduct();
+
+            // Converting image blob into string
             ArrayList<String> imagesString = new ArrayList<>();
             List<ProductImage> productImage = theProduct.getProductImage();
             for (ProductImage theProductImage : productImage) {
                 String str = new String(theProductImage.getImageData(), StandardCharsets.UTF_8);
                 imagesString.add(str);
             }
+            tempRestProduct.setId(theProduct.getId());
             tempRestProduct.setProductName(theProduct.getProductName());
             tempRestProduct.setCategory(theProduct.getCategory());
             tempRestProduct.setSubcategory(theProduct.getSubcategory());

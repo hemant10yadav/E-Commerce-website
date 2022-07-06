@@ -1,7 +1,7 @@
 <div class="container">
   <div *ngIf="products" class="row">
     <div *ngFor="let product of products" class="col-6 col-sm-4 col-md-3 col-xl-3 col-xxl-2">
-      <div class="card cursor-pointer m-1">
+      <div class="card cursor-pointer m-1" (click)="openProductDetail(product)">
         <div class="card-img d-flex justify-content-center">
           <img class="responsive-img" src="{{product.image[0]}}">
         </div>

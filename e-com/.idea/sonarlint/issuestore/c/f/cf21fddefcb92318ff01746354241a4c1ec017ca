@@ -1,6 +1,6 @@
 
-K
-java:S3740-"/Provide the parametrized type for this generic.(€†œ>8õ­Ëªœ0
-Z	java:S106+"9Replace this use of System.out or System.err by a logger.(Åá—•şÿÿÿÿ8ÄÔ£ªœ0
-U	java:S106/"9Replace this use of System.out or System.err by a logger.(Šğš8¨ûÂªœ0
-U	java:S1060"9Replace this use of System.out or System.err by a logger.(›ç†ö8ÄƒÇªœ0
+D
+java:S3740-"/Provide the parametrized type for this generic.(€†œ>
+S	java:S106+"9Replace this use of System.out or System.err by a logger.(Åá—•şÿÿÿÿ
+N	java:S106/"9Replace this use of System.out or System.err by a logger.(Šğš
+N	java:S1060"9Replace this use of System.out or System.err by a logger.(›ç†ö

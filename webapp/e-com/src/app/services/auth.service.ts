@@ -40,18 +40,6 @@ export class AuthService {
       return AES.decrypt(data, key).toString(enc.Utf8);
    }
 
-   async isLoggedIn(){
-     let hem;
-     this.httpGetLoggedUser().then(
-      resolve => {
-         Promise.resolve(true);
-      },
-      reject => {
-        Promise.resolve(false);
-      })
-   }
-
-
    httpGetLoggedUser() {
       return new Promise((resolve, reject) => {
          if (this.getAccessToken()) {
@@ -64,5 +52,9 @@ export class AuthService {
                });
          } else reject(false);
       });
+   }
+
+   logout(){
+     localStorage.removeItem(this.joke);
    }
 }
