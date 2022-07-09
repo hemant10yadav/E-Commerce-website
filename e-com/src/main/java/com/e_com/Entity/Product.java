@@ -33,10 +33,12 @@ public class Product {
     @JoinColumn(name = "product_id")
     private List<ProductImage> productImage;
 
+
     public Product() {
     }
 
-    public Product(int id, String productName, String category, String subcategory, int price, String description, List<ProductImage> productImage) {
+    public Product(int id, String productName, String category, String subcategory, int price, String description,
+                   List<ProductImage> productImage) {
         this.id = id;
         this.productName = productName;
         this.category = category;

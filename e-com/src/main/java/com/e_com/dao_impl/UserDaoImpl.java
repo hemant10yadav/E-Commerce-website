@@ -40,12 +40,16 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void getUserByUsername(String username) {
-        System.out.println("==========================");
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("from User where username =:username ")
                 .setParameter("username ", username);
-        System.out.println(query);
-        System.out.println(query.getFirstResult());
+    }
+
+    @Override
+    public User updateUser(User user) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.update(user);
+        return currentSession.get(User.class, user.getId());
     }
 
 }

@@ -1,24 +1,44 @@
 package com.e_com.rest_class;
 
+import com.e_com.Entity.Cart;
+import com.e_com.Entity.Wishlist;
+
 import java.time.LocalDateTime;
 
 public class RestUserData {
 
+    private int id;
     private String firstName;
     private String lastName;
     private String username;
     private String email;
     private LocalDateTime date;
 
+    private Cart cart;
+
+    private Wishlist wishlist;
+
     public RestUserData() {
     }
 
-    public RestUserData(String firstName, String lastName, String username, String email, LocalDateTime date) {
+    public RestUserData(int id, String firstName, String lastName, String username,
+                        String email, LocalDateTime date, Cart cart, Wishlist wishlist) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.email = email;
         this.date = date;
+        this.cart = cart;
+        this.wishlist = wishlist;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -60,4 +80,22 @@ public class RestUserData {
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public Wishlist getWishlist() {
+        return wishlist;
+    }
+
+    public void setWishlist(Wishlist wishlist) {
+        this.wishlist = wishlist;
+    }
+
+
 }

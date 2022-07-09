@@ -26,6 +26,16 @@ public class PrivateController {
     public User getUser(@PathVariable int theId) {
         return this.userService.getUser(theId);
     }
+    @PostMapping("/user/{theUserId}/product/{theProductId}")
+    public RestUserData updateUserCart(@PathVariable int theUserId, @PathVariable int theProductId) {
+        return this.userService.updateUserCart(theUserId ,theProductId);
+    }
+
+    @PostMapping("/user/{userId}/wishlist/{productId}")
+    public RestUserData updateWishlist(@PathVariable int userId , @PathVariable int productId){
+        this.userService.updateUserWishlist(userId ,productId);
+        return null;
+    }
 
     @GetMapping("/user")
     public RestUserData currentUserName(Principal principal) {

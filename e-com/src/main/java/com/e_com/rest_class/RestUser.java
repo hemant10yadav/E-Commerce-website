@@ -1,12 +1,18 @@
 package com.e_com.rest_class;
 
+import com.e_com.Entity.Cart;
+
 public class RestUser {
+
 
     private String firstName;
     private String lastName;
     private String username;
     private String email;
     private String password;
+
+    private Cart cart;
+
 
     public RestUser() {
     }
@@ -57,6 +63,15 @@ public class RestUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     @Override

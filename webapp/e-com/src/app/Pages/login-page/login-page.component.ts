@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpService } from '../../services/http.service';
+import { HttpUserService } from '../../services/http-user.service';
 import { LoginSignUpService } from '../../services/login-signUp.service';
 import { AuthService } from '../../services/auth.service';
 import {Router} from "@angular/router";
@@ -23,7 +23,7 @@ export class LoginPageComponent implements OnInit {
 
    constructor(
       private httpClient: HttpClient,
-      private httpService: HttpService,
+      private httpService: HttpUserService,
       private loginSignUpService: LoginSignUpService,
       private authService: AuthService,
       private router: Router

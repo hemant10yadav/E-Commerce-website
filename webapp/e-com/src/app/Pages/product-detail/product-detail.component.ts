@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {map} from "rxjs";
-import {HttpService} from "../../services/http.service";
+import {HttpUserService} from "../../services/http-user.service";
 import {Iproduct} from "../../interfaces/iproduct";
+import {HttpProductService} from "../../services/http-product.service";
 
 @Component({
   selector: 'app-product-detail',
@@ -15,11 +16,11 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(private activatedRoute:ActivatedRoute,
               private router:Router,
-              private httpService:HttpService) { }
+              private httpProductService:HttpProductService) { }
 
   ngOnInit(): void {
     const hem = this.activatedRoute.snapshot.params['id'];
-    this.httpService.httpGetProductById(hem).subscribe(data => {
+    this.httpProductService.httpGetProductById(hem).subscribe(data => {
      this.product = data;
      this.displayImage = this.product.image[0]
     });

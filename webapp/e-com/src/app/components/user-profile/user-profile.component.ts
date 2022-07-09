@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../../services/http.service';
+import { HttpUserService } from '../../services/http-user.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,7 @@ export class UserProfileComponent implements OnInit {
    public userDetails: any;
 
    constructor(
-      private httpService: HttpService,
+      private httpService: HttpUserService,
       private authService: AuthService,
       private router: Router
    ) {}

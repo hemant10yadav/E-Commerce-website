@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpService } from '../../services/http.service';
+import { HttpUserService } from '../../services/http-user.service';
 import { LoginSignUpService } from '../../services/login-signUp.service';
 
 @Component({
