@@ -5,6 +5,7 @@ import { HttpProductService } from '../../services/http-product.service';
 import { HttpUserService } from '../../services/http-user.service';
 import { AuthService } from '../../services/auth.service';
 import { Iuser } from '../../interfaces/iuser';
+import {LoginSignUpService} from "../../services/login-signUp.service";
 
 @Component({
    selector: 'app-products',
@@ -20,16 +21,16 @@ export class ProductsComponent implements OnInit {
       private httpUserService: HttpUserService,
       private router: Router,
       private activatedRoute: ActivatedRoute,
-      private authService: AuthService
+      private authService: AuthService,
+      private loginSignUpService:LoginSignUpService
    ) {}
 
    ngOnInit(): void {
       this.httpProductService.httpGetProducts().subscribe(data => {
          this.products = data as Iproduct[];
-
          this.authService.httpGetLoggedUser().then(data => {
             this.user = data as Iuser;
-         });
+         },error=>{});
       });
    }
 
@@ -41,27 +42,32 @@ export class ProductsComponent implements OnInit {
    }
 
    addToCart(accountId: number, productId: number) {
-      this.httpUserService
+     if (this.user) {
+       this.httpUserService
          .HttpAddToCart(accountId, productId)
          .subscribe(data => {
-            this.user = data as Iuser;
+           this.user = data as Iuser;
+           this.authService.user = data as Iuser;
          });
+     } else this.loginSignUpService.goToLoginPage()
    }
 
    addToWishlist(userId: number, productId: number) {
+     if (this.user) {
       console.log('enter ' + userId + productId);
       this.httpUserService
          .httpAddToWishlist(userId, productId)
          .subscribe(data => {
             this.user = data as Iuser;
-            console.log(this.user);
+            this.authService.user = data as Iuser;
          });
+     } else this.loginSignUpService.goToLoginPage()
    }
 
    isInWishlist(id: number): boolean {
       if (this.user) {
          const temp = this.user.wishlist.wishlistProduct.find(
-           wishlistProduct => wishlistProduct.productId === id
+            wishlistProduct => wishlistProduct.productId === id
          );
          if (temp) {
             return true;

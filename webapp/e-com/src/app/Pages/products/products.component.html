@@ -13,18 +13,15 @@
             <img draggable="false" height="16" src="assets/icons/icons8-rupee-material-outlined-16.png">
             <label class="text-muted text-truncate d-block">{{product.price}}</label>
           </div>
-          <div class="ms-auto">
-            <span>
-              <img (click)="addToCart(this.user.id,product.id)" class="cursor-pointer"
-                   draggable="false" src="assets/icons/icons8-shopping-cart-24.png">
+          <div class="ms-auto d-flex align-items-center">
+            <span class="me-2">
+              <i (click)="addToCart(this.user.id,product.id)" class="fas fa-cart-plus fs-18 cursor-pointer app-text-color"></i>
             </span>
             <span *ngIf="isInWishlist(product.id)">
-              <img (click)="addToWishlist(this.user.id,product.id)" class="cursor-pointer" draggable="false" height="24"
-                   src="assets/icons/wishlist-added.png">
+              <i  (click)="addToWishlist(this.user.id,product.id)" class="fas fa-star app-text-color fs-18 cursor-pointer"></i>
             </span>
             <span *ngIf="!isInWishlist(product.id)">
-              <img (click)="addToWishlist(this.user.id,product.id)" class="cursor-pointer" draggable="false" height="24"
-                   src="assets/icons/wishlist-none.png">
+              <i (click)="addToWishlist(this.user.id,product.id)" class="far fa-star fs-18 app-text-color cursor-pointer"></i>
             </span>
           </div>
         </div>

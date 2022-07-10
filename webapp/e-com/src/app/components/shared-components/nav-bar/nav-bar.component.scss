@@ -17,6 +17,15 @@ input {
 }
 
 .dropdown-item:focus, .dropdown-item:hover {
-  color: #ff735c!important;
+  color: #ff735c !important;
   background-color: white;
+}
+
+.bg-badge-color {
+  background-color: #1a2e35;
+}
+
+.dropdown-menu.show {
+  padding-top: 0;
+  padding-bottom: 0;
 }

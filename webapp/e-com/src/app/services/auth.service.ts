@@ -57,8 +57,11 @@ export class AuthService {
       });
    }
 
-   logout(){
+  async logout(){
      localStorage.removeItem(this.joke);
      this.user = null;
+     this.router.navigateByUrl('product');
+    await window.location.reload();
+
    }
 }

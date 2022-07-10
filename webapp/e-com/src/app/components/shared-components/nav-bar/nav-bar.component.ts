@@ -32,18 +32,19 @@ export class NavBarComponent implements OnInit {
     })*/
   }
 
-  openUserProfile() {
-
-  }
 
   async logout() {
-    await this.authService.logout();
     this.user = null;
     this.isLoggedIn = false;
+    await this.authService.logout();
   }
 
   signIn() {
     this.router.navigateByUrl("/login")
 
+  }
+
+  signUp() {
+    this.router.navigateByUrl("/signUp")
   }
 }
