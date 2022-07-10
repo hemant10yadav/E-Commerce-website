@@ -1,4 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {HttpUserService} from "../../../services/http-user.service";
+import {Router} from "@angular/router";
+import {UrlService} from "../../../services/url.service";
+import {AuthService} from "../../../services/auth.service";
+import {Iuser} from "../../../interfaces/iuser";
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,11 +12,38 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
   @Input()
-  hideSearchBar=false;
+  hideSearchBar = false;
+  user: Iuser | null;
+  isLoggedIn = false;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private httpUserService: HttpUserService,
+              public authService: AuthService,
+              private router: Router,
+              private urlService: UrlService) {
   }
 
+  ngOnInit(): void {
+   /* this.user = this.authService.user;*/
+    /*this.authService.httpGetLoggedUser().then(data => {
+      this.user = data as Iuser
+      this.isLoggedIn = true;
+    }, error => {
+      this.isLoggedIn = false;
+    })*/
+  }
+
+  openUserProfile() {
+
+  }
+
+  async logout() {
+    await this.authService.logout();
+    this.user = null;
+    this.isLoggedIn = false;
+  }
+
+  signIn() {
+    this.router.navigateByUrl("/login")
+
+  }
 }

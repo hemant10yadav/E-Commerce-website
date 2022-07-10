@@ -18,12 +18,14 @@
               <img (click)="addToCart(this.user.id,product.id)" class="cursor-pointer"
                    draggable="false" src="assets/icons/icons8-shopping-cart-24.png">
             </span>
-            <span>
-              <img (click)="addToWishlist(this.user.id,product.id)" class="cursor-pointer" draggable="false" height="24" src="assets/icons/wishlist-added.png">
+            <span *ngIf="isInWishlist(product.id)">
+              <img (click)="addToWishlist(this.user.id,product.id)" class="cursor-pointer" draggable="false" height="24"
+                   src="assets/icons/wishlist-added.png">
             </span>
-            <!--<span>
-              <img draggable="false" height="24" src="assets/icons/wishlist-none.png" class="cursor-pointer">
-            </span>-->
+            <span *ngIf="!isInWishlist(product.id)">
+              <img (click)="addToWishlist(this.user.id,product.id)" class="cursor-pointer" draggable="false" height="24"
+                   src="assets/icons/wishlist-none.png">
+            </span>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UrlService } from './url.service';
 import { map } from 'rxjs';
+import {Iuser} from "../interfaces/iuser";
 
 @Injectable({
    providedIn: 'root',
@@ -11,6 +12,7 @@ import { map } from 'rxjs';
 export class AuthService {
    joke = 'Are you kidding me?';
    loggedUser: boolean;
+   user:Iuser | null;
 
    constructor(
       private router: Router,
@@ -47,7 +49,8 @@ export class AuthService {
                .get(this.urlService.userUrl)
                .pipe(map((response: any) => response))
                .subscribe({
-                  next: data => resolve(data),
+                  next: data => {resolve(data )
+                  this.user = data as Iuser},
                   error: e => reject(false),
                });
          } else reject(false);
@@ -56,5 +59,6 @@ export class AuthService {
 
    logout(){
      localStorage.removeItem(this.joke);
+     this.user = null;
    }
 }

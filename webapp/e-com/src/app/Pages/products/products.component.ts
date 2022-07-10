@@ -34,12 +34,13 @@ export class ProductsComponent implements OnInit {
    }
 
    async openProductDetail(product: Iproduct) {
-      await this.router.navigate([product.id + '/product-detail'], { state: this.user
-         ,relativeTo: this.activatedRoute,
+      await this.router.navigate([product.id + '/product-detail'], {
+         state: this.user,
+         relativeTo: this.activatedRoute,
       });
    }
 
-  addToCart(accountId: number, productId: number) {
+   addToCart(accountId: number, productId: number) {
       this.httpUserService
          .HttpAddToCart(accountId, productId)
          .subscribe(data => {
@@ -47,10 +48,25 @@ export class ProductsComponent implements OnInit {
          });
    }
 
-  addToWishlist(userId: number , productId :number ) {
-    this.httpUserService.httpAddToWishlist(userId , productId).subscribe(data => {
-      this.user = data as Iuser;
-      console.log(this.user);
-    })
-  }
+   addToWishlist(userId: number, productId: number) {
+      console.log('enter ' + userId + productId);
+      this.httpUserService
+         .httpAddToWishlist(userId, productId)
+         .subscribe(data => {
+            this.user = data as Iuser;
+            console.log(this.user);
+         });
+   }
+
+   isInWishlist(id: number): boolean {
+      if (this.user) {
+         const temp = this.user.wishlist.wishlistProduct.find(
+           wishlistProduct => wishlistProduct.productId === id
+         );
+         if (temp) {
+            return true;
+         } else return false;
+      }
+      return false;
+   }
 }

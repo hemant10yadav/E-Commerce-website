@@ -15,3 +15,8 @@ input {
   height: 35px;
   width: 35px;
 }
+
+.dropdown-item:focus, .dropdown-item:hover {
+  color: #ff735c!important;
+  background-color: white;
+}
