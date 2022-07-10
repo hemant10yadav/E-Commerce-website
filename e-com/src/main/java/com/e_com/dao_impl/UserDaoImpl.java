@@ -2,18 +2,18 @@ package com.e_com.dao_impl;
 
 import java.util.List;
 
-import com.e_com.Entity.WishlistProduct;
 import com.e_com.dao.UserDao;
 
 import java.util.Collections;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.e_com.Entity.User;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -40,10 +40,14 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void getUserByUsername(String username) {
+    public User getUserByUsername(String username) {
         Session currentSession = sessionFactory.getCurrentSession();
-        Query query = currentSession.createQuery("from User where username =:username ")
-                .setParameter("username ", username);
+       return currentSession.
+               createQuery("from User u where u.username=:username",User.class).setParameter("username", username)
+               .uniqueResult();
+
+
+
     }
 
 

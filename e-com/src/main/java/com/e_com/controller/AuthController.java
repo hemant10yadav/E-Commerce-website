@@ -29,6 +29,6 @@ public class AuthController {
 
     @GetMapping("/user")
     public RestUserData currentUserName(Principal principal) {
-        return this.userService.getUserByUsername(principal.getName());
+        return this.userService.getRestUserByUsername(principal.getName());
     }
 }

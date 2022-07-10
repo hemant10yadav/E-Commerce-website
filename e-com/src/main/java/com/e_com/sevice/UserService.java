@@ -14,6 +14,7 @@ public interface UserService {
 
     public void saveUser(RestUser theUser);
 
-    public RestUserData getUserByUsername(String username);
+    public RestUserData getRestUserByUsername(String username);
+    public User getUserByUsername(String username);
 
 }

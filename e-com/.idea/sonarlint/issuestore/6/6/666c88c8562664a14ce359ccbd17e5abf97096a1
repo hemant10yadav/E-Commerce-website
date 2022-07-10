@@ -1,5 +1,0 @@
-
-Y
-java:S53446">Don't use the default "PasswordEncoder" relying on plain-text.(¬µÕ×ÿÿÿÿÿ
-Q
-java:S1874;";Remove this use of "NoOpPasswordEncoder"; it is deprecated.(å‰ö
