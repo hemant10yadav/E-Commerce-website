@@ -19,7 +19,7 @@ import com.e_com.utility.JwtUtil;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/auth")
+@RequestMapping("/api")
 public class LoginSignupController {
 
     @Autowired

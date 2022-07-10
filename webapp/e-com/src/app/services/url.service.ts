@@ -9,8 +9,8 @@ export class UrlService {
   }
   appUrl = 'http://localhost:8080/e-com/api';
   productUrl = this.appUrl + '/products';
-  loginUrl = this.appUrl + '/auth/login';
-  signUpUrl = this.appUrl + '/auth/signUp';
-  userUrl = this.appUrl + '/private/user';
+  loginUrl = this.appUrl + '/login';
+  signUpUrl = this.appUrl + '/signUp';
+  userUrl = this.appUrl + '/auth/user';
   skipInterceptor = {headers: {skip: "true"}};
 }

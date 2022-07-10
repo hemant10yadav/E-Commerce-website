@@ -1,5 +1,8 @@
 package com.e_com.Entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,7 +14,8 @@ public class Wishlist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "wishlistId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "wishlistId" , orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<WishlistProduct> wishlistProduct;
 
     public Wishlist() {

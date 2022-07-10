@@ -60,8 +60,7 @@ public class AppConfig implements WebMvcConfigurer {
 
 	private int getIntProperty(String propName) {
 		String propVal = env.getProperty(propName);
-		int intPropVal = Integer.parseInt(propVal);
-		return intPropVal;
+		return Integer.parseInt(propVal);
 	}
 
 	private Properties getHibernateProperties() {

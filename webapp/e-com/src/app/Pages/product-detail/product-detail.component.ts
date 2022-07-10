@@ -16,7 +16,9 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(private activatedRoute:ActivatedRoute,
               private router:Router,
-              private httpProductService:HttpProductService) { }
+              private httpProductService:HttpProductService) {
+    console.log(this.router.getCurrentNavigation()?.extras.state)
+  }
 
   ngOnInit(): void {
     const hem = this.activatedRoute.snapshot.params['id'];

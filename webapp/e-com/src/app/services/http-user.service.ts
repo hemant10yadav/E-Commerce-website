@@ -20,9 +20,14 @@ export class HttpUserService {
          .pipe(map((response: any) => response));
    }
 
-   HttpAddToWishList(userId:number ,productId: number): Observable<any> {
+   HttpAddToCart(userId:number ,productId: number): Observable<any> {
       return this.httpClient
-         .post(this.urlService.userUrl +'/' + userId + '/product/' + productId , {})
+         .post(this.urlService.appUrl +'/user/' + userId + '/cart/' + productId , {})
          .pipe(map((response: any) => response));
+   }
+
+   httpAddToWishlist (userId :number , productId : number) :Observable<any> {
+     return this.httpClient.post(this.urlService.appUrl + '/user/' + userId + '/wishlist/' + productId,{})
+       .pipe(map((response:any) => response));
    }
 }

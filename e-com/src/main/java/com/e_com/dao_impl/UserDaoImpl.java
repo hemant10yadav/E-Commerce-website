@@ -2,6 +2,7 @@ package com.e_com.dao_impl;
 
 import java.util.List;
 
+import com.e_com.Entity.WishlistProduct;
 import com.e_com.dao.UserDao;
 
 import java.util.Collections;
@@ -35,7 +36,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void saveUser(User theUser) {
         Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.saveOrUpdate(theUser);
+        currentSession.save(theUser);
     }
 
     @Override
@@ -44,6 +45,7 @@ public class UserDaoImpl implements UserDao {
         Query query = currentSession.createQuery("from User where username =:username ")
                 .setParameter("username ", username);
     }
+
 
     @Override
     public User updateUser(User user) {

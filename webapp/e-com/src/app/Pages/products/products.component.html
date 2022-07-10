@@ -1,25 +1,28 @@
 <div class="container">
   <div *ngIf="products" class="row">
     <div *ngFor="let product of products" class="col-6 col-sm-4 col-md-3 col-xl-3 col-xxl-2">
-      <div class="card cursor-pointer m-1">
-        <div class="card-img d-flex justify-content-center" (click)="openProductDetail(product)">
+      <div class="card m-1">
+        <div (click)="openProductDetail(product)" class="card-img d-flex justify-content-center cursor-pointer">
           <img class="responsive-img" src="{{product.image[0]}}">
         </div>
-        <div class="mt-2 text-center px-2" (click)="openProductDetail(product)">
+        <div (click)="openProductDetail(product)" class="mt-2 text-center px-2 cursor-pointer">
           <h6 class="text-truncate">{{product.productName}}</h6>
         </div>
-        <div class="card-footer d-flex align-items-center" (click)="openProductDetail(product)">
-          <img height="16" src="assets/icons/icons8-rupee-material-outlined-16.png">
-          <label class="text-muted text-truncate d-block">{{product.price}}</label>
+        <div class="card-footer d-flex align-items-center">
+          <div (click)="openProductDetail(product)" class="cursor-pointer d-flex align-items-center">
+            <img draggable="false" height="16" src="assets/icons/icons8-rupee-material-outlined-16.png">
+            <label class="text-muted text-truncate d-block">{{product.price}}</label>
+          </div>
           <div class="ms-auto">
             <span>
-              <img src="assets/icons/icons8-shopping-cart-24.png">
+              <img (click)="addToCart(this.user.id,product.id)" class="cursor-pointer"
+                   draggable="false" src="assets/icons/icons8-shopping-cart-24.png">
             </span>
-            <span (click)="addToWishList(this.account.id,product.id)">
-              <img height="24" src="assets/icons/wishlist-added.png">
+            <span>
+              <img (click)="addToWishlist(this.user.id,product.id)" class="cursor-pointer" draggable="false" height="24" src="assets/icons/wishlist-added.png">
             </span>
             <!--<span>
-              <img height="24" src="assets/icons/wishlist-none.png">
+              <img draggable="false" height="24" src="assets/icons/wishlist-none.png" class="cursor-pointer">
             </span>-->
           </div>
         </div>

@@ -48,4 +48,13 @@ public class WishlistProduct {
     public void setProductId(int productId) {
         this.productId = productId;
     }
+
+    @Override
+    public String toString() {
+        return "WishlistProduct{" +
+                "id=" + id +
+                ", wishlistId=" + wishlistId +
+                ", productId=" + productId +
+                '}';
+    }
 }

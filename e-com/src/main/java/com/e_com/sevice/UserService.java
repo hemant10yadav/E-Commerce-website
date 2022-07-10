@@ -16,7 +16,4 @@ public interface UserService {
 
     public RestUserData getUserByUsername(String username);
 
-    public RestUserData updateUserCart(int userId, int productId);
-    public RestUserData updateUserWishlist(int userId, int productId);
-
 }
