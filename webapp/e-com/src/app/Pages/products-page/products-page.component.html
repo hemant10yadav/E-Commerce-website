@@ -15,13 +15,12 @@
           </div>
           <div class="ms-auto d-flex align-items-center">
             <span class="me-2">
-              <i (click)="addToCart(this.user.id,product.id)" class="fas fa-cart-plus fs-18 cursor-pointer app-text-color"></i>
+              <i (click)="addToCart(this.user.id,product.id)"
+                 class="fas fa-cart-plus fs-18 cursor-pointer app-text-color"></i>
             </span>
-            <span *ngIf="isInWishlist(product.id)">
-              <i  (click)="addToWishlist(this.user.id,product.id)" class="fas fa-star app-text-color fs-18 cursor-pointer"></i>
-            </span>
-            <span *ngIf="!isInWishlist(product.id)">
-              <i (click)="addToWishlist(this.user.id,product.id)" class="far fa-star fs-18 app-text-color cursor-pointer"></i>
+            <span (click)="addToWishlist(this.user.id,product.id)">
+              <i *ngIf="isInWishlist(product.id)" class="fas fa-star app-text-color fs-18 cursor-pointer"></i>
+              <i *ngIf="!isInWishlist(product.id)" class="far fa-star fs-18 app-text-color cursor-pointer"></i>
             </span>
           </div>
         </div>

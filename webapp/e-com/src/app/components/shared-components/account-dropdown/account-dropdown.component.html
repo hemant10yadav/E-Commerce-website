@@ -17,7 +17,7 @@
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-badge-color">
                   {{authService.user.cart?.cartProducts?.length}}
             </span>
-          </ng-container>
+        </ng-container>
       </span>
     </div>
     <div class="text-white" data-bs-toggle="dropdown" id="dropdownMenuButton1">
@@ -33,7 +33,9 @@
     </div>
     <ul aria-labelledby="dropdownMenuButton1" class="dropdown-menu app-bg-color">
       <ng-container *ngIf="authService.user">
-        <li><a class="dropdown-item text-white">Profile</a></li>
+        <li><a [routerLink]="['user', authService.user.id ,'user-profile']"
+               class="dropdown-item text-white">Profile</a>
+        </li>
         <li><a class="dropdown-item text-white">Wishlist</a></li>
         <li><a class="dropdown-item text-white">Cart</a></li>
         <li><a (click)="logout()" class="dropdown-item text-white">Logout</a></li>
