@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import {AuthService} from "../../services/auth.service";
 
 @Component({
-   selector: 'app-add-products',
+   selector: 'app-add-products-page',
    templateUrl: './add-products.component.html',
    styleUrls: ['./add-products.component.scss'],
 })

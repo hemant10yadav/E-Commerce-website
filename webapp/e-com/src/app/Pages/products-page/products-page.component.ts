@@ -8,11 +8,11 @@ import { Iuser } from '../../interfaces/iuser';
 import {LoginSignUpService} from "../../services/login-signUp.service";
 
 @Component({
-   selector: 'app-products',
-   templateUrl: './products.component.html',
-   styleUrls: ['./products.component.scss'],
+   selector: 'app-products-page',
+   templateUrl: './products-page.component.html',
+   styleUrls: ['./products-page.component.scss'],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsPageComponent implements OnInit {
    products: Array<Iproduct>;
    user: Iuser;
 

@@ -8,13 +8,13 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () =>
-      import('./Pages/user-page/user-page.module').then(m => m.UserPageModule),
+      import('./Pages/profile-page/profile-page.module').then(m => m.ProfilePageModule),
     canActivate: [MainAuthGuard],
   },
   {
     path: 'products',
     loadChildren: () =>
-      import('./Pages/products/products.module').then(m => m.ProductsModule),
+      import('./Pages/products-page/products-page.module').then(m => m.ProductsPageModule),
   },
   {
     path: 'signup',
@@ -31,7 +31,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'add-products',
+    path: 'add-products-page',
     component: AddProductsComponent,
     canActivate: [MainAuthGuard],
   },

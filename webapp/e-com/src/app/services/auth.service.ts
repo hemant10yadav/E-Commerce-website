@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UrlService } from './url.service';
 import { map } from 'rxjs';
-import {Iuser} from "../interfaces/iuser";
+import { Iuser } from '../interfaces/iuser';
 
 @Injectable({
    providedIn: 'root',
@@ -12,7 +12,7 @@ import {Iuser} from "../interfaces/iuser";
 export class AuthService {
    joke = 'Are you kidding me?';
    loggedUser: boolean;
-   user:Iuser | null;
+   user: Iuser | null;
 
    constructor(
       private router: Router,
@@ -49,19 +49,20 @@ export class AuthService {
                .get(this.urlService.userUrl)
                .pipe(map((response: any) => response))
                .subscribe({
-                  next: data => {resolve(data )
-                  this.user = data as Iuser},
+                  next: data => {
+                     resolve(data);
+                     this.user = data as Iuser;
+                  },
                   error: e => reject(false),
                });
          } else reject(false);
       });
    }
 
-  async logout(){
-     localStorage.removeItem(this.joke);
-     this.user = null;
-     this.router.navigateByUrl('product');
-    await window.location.reload();
-
+   async logout() {
+      localStorage.removeItem(this.joke);
+      this.user = null;
+      this.router.navigate(['/product'], { replaceUrl: true });
+      await window.location.reload();
    }
 }

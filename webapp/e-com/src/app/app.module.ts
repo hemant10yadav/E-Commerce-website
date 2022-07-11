@@ -10,8 +10,8 @@ import { SignupPageComponent } from './Pages/signup-page/signup-page.component';
 import { SharedComponentModule } from './components/shared-components/shared-component.module';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { AddProductsComponent } from './Pages/add-products/add-products.component';
-import { ProductsComponent } from './Pages/products/products.component';
-import { UserPageComponent } from './Pages/user-page/user-page.component';
+import { ProductsPageComponent } from './Pages/products-page/products-page.component';
+import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
 import { TokenInterceptor } from './services/token.interceptor';
 
 @NgModule({
@@ -20,8 +20,8 @@ import { TokenInterceptor } from './services/token.interceptor';
       SignupPageComponent,
       LoginPageComponent,
       AddProductsComponent,
-      ProductsComponent,
-      UserPageComponent,
+      ProductsPageComponent,
+      ProfilePageComponent,
    ],
    imports: [
       BrowserModule,

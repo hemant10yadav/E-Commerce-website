@@ -1,13 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {UserPageComponent} from "./user-page.component";
-import {UserProfileComponent} from "../../components/user-profile/user-profile.component";
-import {MainAuthGuard} from "../../services/main-auth-guard/main-auth-guard";
+import {ProfilePageComponent} from "./profile-page.component";
+import {UserProfileComponent} from "./user-profile/user-profile.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: UserPageComponent,
+    component: ProfilePageComponent,
     children:[{
       path: 'user-profile',
       component: UserProfileComponent
@@ -25,5 +24,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UserPageRoutingModule {
+export class ProfilePageRoutingModule {
 }

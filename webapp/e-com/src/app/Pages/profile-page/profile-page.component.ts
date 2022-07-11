@@ -3,11 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-   selector: 'app-user-page',
-   templateUrl: './user-page.component.html',
-   styleUrls: ['./user-page.component.scss'],
+   selector: 'app-profile-page',
+   templateUrl: './profile-page.component.html',
+   styleUrls: ['./profile-page.component.scss'],
 })
-export class UserPageComponent implements OnInit {
+export class ProfilePageComponent implements OnInit {
    constructor(
       private router: Router,
       private activatedRoute: ActivatedRoute,

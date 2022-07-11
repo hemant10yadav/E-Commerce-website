@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpUserService } from '../../services/http-user.service';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import {HttpUserService} from "../../../services/http-user.service";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
    selector: 'app-user-profile',
@@ -24,7 +24,7 @@ export class UserProfileComponent implements OnInit {
    async check() {
       this.authService.httpGetLoggedUser().then(
          resolve => {
-                this.userDetails = resolve;
+            this.userDetails = resolve;
          },
          reject => {
             this.router.navigateByUrl('/home');

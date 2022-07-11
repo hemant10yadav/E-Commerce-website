@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ProductsRoutingModule } from './products-routing.module';
+import { ProductsPageRoutingModule } from './products-page-routing.module';
 import {ProductDetailComponent} from "../product-detail/product-detail.component";
 
 
@@ -11,7 +11,7 @@ import {ProductDetailComponent} from "../product-detail/product-detail.component
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule,
+    ProductsPageRoutingModule,
   ]
 })
-export class ProductsModule { }
+export class ProductsPageModule { }
