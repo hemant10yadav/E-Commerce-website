@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpUserService } from '../../services/http-user.service';
-import { LoginSignUpService } from '../../services/login-signUp.service';
-import { AuthService } from '../../services/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {HttpUserService} from '../../services/http-user.service';
+import {LoginSignUpService} from '../../services/login-signUp.service';
 import {Router} from "@angular/router";
 
 @Component({
@@ -25,17 +24,14 @@ export class LoginPageComponent implements OnInit {
       private httpClient: HttpClient,
       private httpService: HttpUserService,
       private loginSignUpService: LoginSignUpService,
-      private authService: AuthService,
       private router: Router
    ) {}
 
-   ngOnInit(): void {
-
-   }
+   ngOnInit(): void {}
 
    async login() {
       await this.loginSignUpService.doLogin(this.data);
-      await this.router.navigateByUrl('/home');
+      await this.router.navigate(['/home'], { replaceUrl: true });
    }
 
    checkValue() {

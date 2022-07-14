@@ -1,4 +1,5 @@
-.list-group-item:hover {
+.list-group-item:hover,.list-group-item.active {
   background-color: #ff735c!important;
   color: white!important;
+  border: #ff735c;
 }

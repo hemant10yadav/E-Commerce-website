@@ -2,15 +2,17 @@
   <div class="row">
     <div class="col-2 list-group">
       <ul class="list-group">
-        <li class="list-group-item cursor-pointer" [routerLink]="'/user-profile'">User Profile</li>
-        <li class="list-group-item cursor-pointer">Your Order History</li>
+        <li [routerLink]="'.../user-profile'" class="list-group-item cursor-pointer">User Profile</li>
+        <li [routerLinkActive]="'active'" class="list-group-item cursor-pointer">Your Order History</li>
         <li class="list-group-item cursor-pointer">Track Your Orders</li>
         <li class="list-group-item cursor-pointer">Your Cart</li>
-        <li class="list-group-item cursor-pointer">Your wishlist</li>
+        <li [routerLinkActive]="'active'" [routerLink]="'wishlist'" [state]="user"
+            class="list-group-item cursor-pointer">Your wishlist
+        </li>
         <li class="list-group-item cursor-pointer">Sell A product</li>
         <li class="list-group-item cursor-pointer">Your products</li>
         <li class="list-group-item cursor-pointer">Settings</li>
-        <li class="list-group-item cursor-pointer" (click)="logout()">Logout</li>
+        <li (click)="logout()" class="list-group-item cursor-pointer">Logout</li>
       </ul>
     </div>
     <div class="col-10">

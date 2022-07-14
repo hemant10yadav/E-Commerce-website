@@ -21,7 +21,7 @@ import {TokenInterceptor} from './services/token.interceptor';
     LoginPageComponent,
     AddProductsComponent,
     ProductsPageComponent,
-    ProfilePageComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

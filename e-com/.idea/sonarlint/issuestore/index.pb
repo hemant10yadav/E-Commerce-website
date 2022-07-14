@@ -67,7 +67,3 @@ p
 @src/main/java/com/e_com/config/AppSecurityWebAppInitializer.java,5\6\568959a4bba7048c1eb28f2c0f5ee45fc8251351
 k
 ;src/main/java/com/e_com/sevice/CustomUserDetailService.java,d\a\da9e66b5971669c0500fef4186a8e8adc7bc6fd0
-h
-8src/main/java/com/e_com/sevice_impl/UserServiceImpl.java,1\b\1b39185aeb5ff0eb2ba8c957158b8b9dd84bf3b4
-p
-@src/main/java/com/e_com/sevice_impl/UserActivityServiceImpl.java,a\9\a9a08211bd5eb4f9606663dc75f355061115892d

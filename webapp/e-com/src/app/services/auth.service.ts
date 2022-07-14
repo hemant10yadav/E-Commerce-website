@@ -63,6 +63,5 @@ export class AuthService {
       localStorage.removeItem(this.joke);
       this.user = null;
       this.router.navigate(['/product'], { replaceUrl: true });
-      await window.location.reload();
    }
 }

@@ -5,12 +5,12 @@ import {ProductsPageComponent} from "./products-page.component";
 const routes: Routes = [
   {
     path: '',
-    component: ProductsPageComponent
+    component: ProductsPageComponent,
   },
   {
     path: ':id/product-detail',
     loadChildren: () => import('../product-detail/product-detail.module').then(m => m.ProductDetailModule),
-  }
+  },
 ]
 
 
