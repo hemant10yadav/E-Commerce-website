@@ -20,9 +20,12 @@ export class HttpUserService {
          .pipe(map((response: any) => response));
    }
 
-   HttpAddToCart(userId:number ,productId: number): Observable<any> {
+   HttpAddToCart(userId:number ,productId: number, deleteAction? : boolean): Observable<any> {
+     if(deleteAction === undefined){
+       deleteAction = false;
+     }
       return this.httpClient
-         .post(this.urlService.appUrl +'/user/' + userId + '/cart/' + productId , {})
+         .post(this.urlService.appUrl +'/user/' + userId + '/cart/' + productId + '/?deleteAction=' + deleteAction, {})
          .pipe(map((response: any) => response));
    }
 

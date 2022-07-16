@@ -24,6 +24,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/app/scss-variables"
+              ]
+            },
+
             "outputPath": "dist/e-com",
             "index": "src/index.html",
             "main": "src/main.ts",

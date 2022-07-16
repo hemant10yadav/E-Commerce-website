@@ -15,8 +15,9 @@ public class UserActivityController {
 
 
     @PostMapping("/{userId}/cart/{productId}")
-    public RestUserData updateUserCart(@PathVariable int userId, @PathVariable int productId) {
-        return this.userActivityService.addProductInUserCart(userId, productId);
+    public RestUserData updateUserCart(@PathVariable int userId, @PathVariable int productId,
+                                       @RequestParam(required = false) boolean deleteAction ) {
+        return this.userActivityService.addProductInUserCart(userId, productId,deleteAction);
     }
 
     @PostMapping("/{userId}/wishlist/{productId}")

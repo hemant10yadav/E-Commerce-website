@@ -1,10 +1,12 @@
+@import "variables";
+
 .user-section {
   height: 35px;
   width: 35px;
 }
 
 .dropdown-item:focus, .dropdown-item:hover {
-  color: #ff735c !important;
+  color: $appColor !important;
   background-color: white;
 }
 

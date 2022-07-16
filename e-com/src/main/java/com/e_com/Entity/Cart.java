@@ -13,7 +13,7 @@ public class Cart {
     @Column(name = "id")
     private int id;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "cartId")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "cartId", orphanRemoval = true)
     private List<CartProducts> cartProducts;
 
     public Cart() {

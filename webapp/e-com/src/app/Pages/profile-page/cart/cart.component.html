@@ -1,8 +1,12 @@
-<div class="">
 <div *ngIf="user" class="card min-vh-100">
   <div class="h5 card-header">
-    <span class="me-1">My Wishlist</span>
-    <span class="">({{user.wishlist.wishlistProduct.length}})</span>
+    <span class="me-1">My Cart</span>
+    <span class="">({{user.cart.cartProducts.length}})</span>
+    <div class="float-end">
+      <span class="text-muted">Total Amount : </span>
+      <i class="fas fa-rupee-sign"></i>
+      <span class="ms-1">{{totalAmount}} </span>
+    </div>
   </div>
   <div class="card-body py-0">
     <ng-container *ngIf="products">
@@ -15,23 +19,22 @@
             <p class="h5 text-truncate" title="{{product.productName}}">{{product.productName}}</p>
           </div>
           <div class="d-flex align-items-center mt-2">
-            <img draggable="false" height="16" src="assets/icons/icons8-rupee-material-outlined-16.png">
+            <i class="fas fa-rupee-sign me-1"></i>
             <label class="text-muted text-truncate d-block">{{product.price}}</label>
           </div>
         </div>
-        <div class=" ms-auto col-auto d-sm-grid gap-2">
-          <button (click)="addToCart(product.id)" class="btn app-bg-color text-white">Add to cart</button>
-          <button class="btn app-bg-color text-white">Buy now</button>
-          <button (click)="removeFromWishlist(product, products.indexOf(product))" class="btn app-bg-color text-white">
-            Delete
+        <div class=" ms-auto col-auto">
+          <button (click)="addToWishlist(product.id)" class="btn d-block app-bg-color text-white w-100 mb-3">Add to
+            Wishlist
+          </button>
+          <button (click)="removeFromCart(product.id, products.indexOf(product))"
+                  class="btn w-100 app-bg-color text-white">
+            Remove
           </button>
         </div>
       </div>
     </ng-container>
   </div>
   <div>
-
   </div>
-
-</div>
 </div>

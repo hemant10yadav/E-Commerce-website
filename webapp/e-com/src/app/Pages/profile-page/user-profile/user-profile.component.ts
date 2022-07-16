@@ -9,7 +9,7 @@ import {AuthService} from "../../../services/auth.service";
    styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit {
-   public userDetails: any;
+   public user: any;
 
    constructor(
       private httpService: HttpUserService,
@@ -24,7 +24,7 @@ export class UserProfileComponent implements OnInit {
    async check() {
       this.authService.httpGetLoggedUser().then(
          resolve => {
-            this.userDetails = resolve;
+            this.user = resolve;
          },
          reject => {
             this.router.navigateByUrl('/home');

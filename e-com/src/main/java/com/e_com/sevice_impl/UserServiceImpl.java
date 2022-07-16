@@ -6,6 +6,7 @@ import com.e_com.Entity.*;
 import com.e_com.rest_class.RestUser;
 import com.e_com.rest_class.RestUserData;
 import com.e_com.sevice.UserService;
+import java.util.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUsers() {
-        return null;
+        return Collections.emptyList();
     }
 
     @Override

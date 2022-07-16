@@ -1,7 +1,7 @@
 <div class="me-3 cursor-pointer dropdown d-flex btn btn align-items-center">
-  <div>
+  <div (click)="openWishlist(authService.user)">
       <span class="position-relative me-3">
-        <i class="fas fa-star text-white fs-4" (click)="openWishlist(authService.user)"></i>
+        <i class="fas fa-star text-white fs-4"></i>
         <ng-container *ngIf="authService.user">
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-badge-color">
                   {{authService.user.wishlist?.wishlistProduct?.length}}
@@ -10,9 +10,9 @@
       </span>
   </div>
   <div class="ms-auto  cursor-pointer dropdown d-flex btn btn align-items-center">
-    <div>
+    <div (click)="openCart(authService.user)">
       <span class="position-relative me-4">
-        <i class="fas fa-cart-arrow-down text-white fs-4"(click)="openCart(authService.user)"></i>
+        <i class="fas fa-cart-arrow-down text-white fs-4"></i>
         <ng-container *ngIf="authService.user">
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-badge-color">
                   {{authService.user.cart?.cartProducts?.length}}

@@ -57,7 +57,7 @@ public class UserActivityServiceImpl implements UserActivityService {
 
 
     @Override
-    public RestUserData addProductInUserCart(int userId, int productId) {
+    public RestUserData addProductInUserCart(int userId, int productId, boolean deleteAction) {
 
         //get user from db
         User user = this.userDao.getUser(userId);
@@ -76,10 +76,17 @@ public class UserActivityServiceImpl implements UserActivityService {
             tempCartProducts = new ArrayList<>();
         } else tempCartProducts = cart.getCartProducts();
 
-        //add new cartProduct to list of cartProduct
-        tempCartProducts.add(cartProduct);
+        //check if deleteAction is true if true delete product id else add new cartProductId to list of cartProduct
+        if (deleteAction) {
+            for (CartProducts temp : tempCartProducts) {
+                if (temp.getProductId() == productId) {
+                    tempCartProducts.remove(temp);
+                    break;
+                }
+            }
+        } else tempCartProducts.add(cartProduct);
 
-        //set list into cart
+        //set list into carts
         cart.setCartProducts(tempCartProducts);
         user.setCart(cart);
         this.userDao.saveUser(user);
@@ -89,8 +96,4 @@ public class UserActivityServiceImpl implements UserActivityService {
                 user.getCart(), user.getWishlist());
     }
 
-    @Override
-    public RestUserData deleteProductFromUserCart(int cartId, int productId) {
-        return null;
-    }
 }

@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 @import '~font-awesome/css/font-awesome.css';
+@import "app/scss-variables/variables";
 
-* {
+
+body {
   font-family: 'Work Sans';
 }
 
@@ -11,19 +13,25 @@
 }
 
 .app-bg-color {
-  background-color: #ff735c !important;
+  background-color: $appColor !important;
 }
 
 .app-text-color {
-  color: #ff735c !important;
+  color: $appColor !important;
 }
 
 .fs-12 {
   font-size: 12px;
 }
+
 .fs-16 {
   font-size: 16px;
 }
+
 .fs-18 {
   font-size: 18px;
+}
+
+.btn {
+
 }

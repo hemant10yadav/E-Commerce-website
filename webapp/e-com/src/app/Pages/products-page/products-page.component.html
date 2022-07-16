@@ -6,19 +6,19 @@
           <img class="responsive-img" src="{{product.image[0]}}">
         </div>
         <div (click)="openProductDetail(product)" class="mt-2 text-center px-2 cursor-pointer">
-          <h6 class="text-truncate">{{product.productName}}</h6>
+          <h6 class="text-truncate" title="{{product.productName}}">{{product.productName}}</h6>
         </div>
         <div class="card-footer d-flex align-items-center">
           <div (click)="openProductDetail(product)" class="cursor-pointer d-flex align-items-center">
-            <img draggable="false" height="16" src="assets/icons/icons8-rupee-material-outlined-16.png">
+            <i class="fas fa-rupee-sign me-1 fs-18"></i>
             <label class="text-muted text-truncate d-block">{{product.price}}</label>
           </div>
           <div class="ms-auto d-flex align-items-center">
             <span class="me-2">
-              <i (click)="addToCart(this.user.id,product.id)"
+              <i (click)="addToCart(this.user.id,product.id)" title="Add to cart"
                  class="fas fa-cart-plus fs-18 cursor-pointer app-text-color"></i>
             </span>
-            <span (click)="addToWishlist(this.user.id,product.id)">
+            <span (click)="addToWishlist(this.user.id,product.id)" title="Add to wishlist">
               <i *ngIf="isInWishlist(product.id)" class="fas fa-star app-text-color fs-18 cursor-pointer"></i>
               <i *ngIf="!isInWishlist(product.id)" class="far fa-star fs-18 app-text-color cursor-pointer"></i>
             </span>
