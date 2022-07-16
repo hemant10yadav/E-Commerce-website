@@ -22,6 +22,7 @@ export class LoginSignUpService {
          .subscribe(
             data => {
                this.authService.saveUser(data.token);
+               this.authService.httpGetLoggedUser()
             },
             error => {
                console.log(error);

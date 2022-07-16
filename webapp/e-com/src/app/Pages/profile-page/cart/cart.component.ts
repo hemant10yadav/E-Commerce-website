@@ -61,5 +61,14 @@ export class CartComponent implements OnInit {
       }
    }
 
-   addToWishlist(id: number) {}
+   async addToWishlist(productId: number, i: number) {
+      await this.httpUserService
+         .httpAddToWishlist(this.user.id, productId)
+         .subscribe(data => {
+            this.user = data as Iuser;
+            this.authService.user = data as Iuser;
+         });
+      this.removeFromCart(productId, i);
+   }
+
 }

@@ -32,6 +32,8 @@ body {
   font-size: 18px;
 }
 
-.btn {
-
+.sticky-bottom {
+  position: sticky;
+  bottom: 0px;
+  z-index: 1020;
 }

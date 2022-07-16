@@ -9,7 +9,14 @@
     </div>
   </div>
   <div class="card-body py-0">
-    <ng-container *ngIf="products">
+    <ng-container *ngIf="products.length === 0">
+      <div class="d-flex justify-content-center">
+        <div class="h-50 w-50">
+          <img class="img-fluid" src="assets/images/background/gif/Empty.gif">
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="products.length > 0">
       <div *ngFor="let product of products;" class="row border-bottom  mt-3 pb-3">
         <div class="col-4 col-sm-3 col-md-2 d-flex justify-content-center">
           <img class="thumbnail" src="{{product.image[0]}}">
@@ -24,8 +31,8 @@
           </div>
         </div>
         <div class=" ms-auto col-auto">
-          <button (click)="addToWishlist(product.id)" class="btn d-block app-bg-color text-white w-100 mb-3">Add to
-            Wishlist
+          <button (click)="addToWishlist(product.id,products.indexOf(product))" class="btn d-block app-bg-color text-white w-100 mb-3">
+            Buy Later
           </button>
           <button (click)="removeFromCart(product.id, products.indexOf(product))"
                   class="btn w-100 app-bg-color text-white">
@@ -36,5 +43,12 @@
     </ng-container>
   </div>
   <div>
+  </div>
+  <div *ngIf="products.length > 0" class="sticky-bottom d-flex">
+  <button class=" mx-auto btn app-bg-color btn-lg text-white  w-50">
+    <span>Buy Now</span>
+    <i class="fas fa-rupee-sign ms-1"></i>
+    <span class="ms-1">{{totalAmount}} </span>
+  </button>
   </div>
 </div>
