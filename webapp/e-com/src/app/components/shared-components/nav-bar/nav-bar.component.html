@@ -1,12 +1,19 @@
 <div class="nav-height d-flex align-items-center w-100 app-bg-color sticky-top">
-  <div [routerLink]="'/products-page'" class="ms-3 h6 text-white cursor-pointer">Home</div>
-  <div [routerLink]="'/add-products-page'" class="ms-3 h6 text-white cursor-pointer">Add Product</div>
+  <div class="ms-3 h6">
+    <a [routerLinkActive]="'active'" [routerLink]="'/products'"
+       class="text-white cursor-pointer text-decoration-none">Home</a>
+  </div>
+  <div class="ms-3 h6">
+    <a [routerLinkActive]="'active'" [routerLink]="'/add-products-page'"
+       class="text-white cursor-pointer text-decoration-none">Add Product</a>
+  </div>
   <div *ngIf="hideSearchBar" class="float-end me-5 d-flex align-items-center ms-auto">
     <input class="search-input  form-control rounded-3 border-dark" placeholder="Search box">
-    <img class="cursor-pointer border-dark search-icon rounded-end" height="38" src="assets/icons/search.gif"
+    <img class="cursor-pointer border-dark search-icon rounded-end"
+         height="38" src="assets/icons/search.gif"
          width="38">
   </div>
-  <div class="ms-auto" >
+  <div class="ms-auto">
     <app-account-dropdown></app-account-dropdown>
   </div>
 </div>

@@ -1,5 +1,7 @@
-.list-group-item:hover,.list-group-item.active {
-  background-color: #ff735c!important;
-  color: white!important;
-  border: #ff735c;
+@import "variables";
+
+.list-group-item:hover, .list-group-item.active {
+  background-color: $appColor !important;
+  color: white !important;
+  border: $appColor;
 }

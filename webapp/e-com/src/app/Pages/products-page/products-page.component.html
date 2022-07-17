@@ -14,12 +14,12 @@
             <label class="text-muted text-truncate d-block">{{product.price}}</label>
           </div>
           <div class="ms-auto d-flex align-items-center">
-            <span class="me-2">
-              <i (click)="addToCart(this.user.id,product.id)" title="Add to cart"
-                 class="fas fa-cart-plus fs-18 cursor-pointer app-text-color"></i>
+            <span (click)="addToCart(this.user.id,product.id)" class="me-2 ">
+              <i *ngIf="!isInCart(product)" class="fas fa-cart-plus fs-18 cursor-pointer app-text-color" title="Add to cart"></i>
+              <i *ngIf="isInCart(product)" class="fas fa-shopping-cart fs-18 cursor-pointer app-text-color" title="Add to cart"></i>
             </span>
             <span (click)="addToWishlist(this.user.id,product.id)" title="Add to wishlist">
-              <i *ngIf="isInWishlist(product.id)" class="fas fa-star app-text-color fs-18 cursor-pointer"></i>
+              <i *ngIf="isInWishlist(product.id)" class="fas fa-star text-badge-color fs-18 cursor-pointer"></i>
               <i *ngIf="!isInWishlist(product.id)" class="far fa-star fs-18 app-text-color cursor-pointer"></i>
             </span>
           </div>

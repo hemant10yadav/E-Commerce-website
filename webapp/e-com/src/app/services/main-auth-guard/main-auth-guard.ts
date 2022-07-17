@@ -27,7 +27,6 @@ export class MainAuthGuard implements CanActivate {
     return new Promise((resolve) => {
       this.authService.httpGetLoggedUser().then(
         res => {
-          console.log(res)
          resolve(true);
         },
         error => {

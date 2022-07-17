@@ -22,6 +22,7 @@ public class UserActivityController {
 
     @PostMapping("/{userId}/wishlist/{productId}")
     public RestUserData updateWishlist(@PathVariable int userId, @PathVariable int productId) {
+        System.out.println("hello how ????????????????");
         return this.userActivityService.updateUserWishlist(userId, productId);
     }
 }

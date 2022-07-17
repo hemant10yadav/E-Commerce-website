@@ -30,18 +30,20 @@ export class ProductsPageComponent implements OnInit {
          this.products = data as Iproduct[];
          if (this.authService.user) {
             this.user = this.authService.user;
-         }else {this.authService.httpGetLoggedUser().then(
-           data => {
-             this.user = data as Iuser;
-           },
-           error => {}
-         );}
+         } else {
+            this.authService.httpGetLoggedUser().then(
+               data => {
+                  this.user = data as Iuser;
+               },
+               error => {}
+            );
+         }
       });
    }
 
    async openProductDetail(product: Iproduct) {
       await this.router.navigate([product.id + '/product-detail'], {
-         state: {product, user: this.user, },
+         state: { product, user: this.user },
          relativeTo: this.activatedRoute,
       });
    }
@@ -72,6 +74,18 @@ export class ProductsPageComponent implements OnInit {
       if (this.user) {
          const temp = this.user.wishlist.wishlistProduct.find(
             wishlistProduct => wishlistProduct.productId === id
+         );
+         if (temp) {
+            return true;
+         } else return false;
+      }
+      return false;
+   }
+
+   isInCart(product: Iproduct): boolean {
+      if (this.user) {
+         const temp = this.user.cart.cartProducts.find(
+            cartProduct => cartProduct.productId == product.id
          );
          if (temp) {
             return true;

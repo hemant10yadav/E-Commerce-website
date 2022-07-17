@@ -62,6 +62,8 @@ export class AuthService {
    async logout() {
       localStorage.removeItem(this.joke);
       this.user = null;
-      this.router.navigate(['/product'], { replaceUrl: true });
+      await this.router
+         .navigateByUrl('login', { skipLocationChange: true })
+         .then(() => this.router.navigate(['products']));
    }
 }

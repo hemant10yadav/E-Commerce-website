@@ -37,3 +37,14 @@ body {
   bottom: 0px;
   z-index: 1020;
 }
+
+.special-text {
+  color: $specialColor;
+}
+
+.bg-badge-color {
+  background-color: $badgeColor;
+}
+.text-badge-color {
+  color: $badgeColor;
+}

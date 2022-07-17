@@ -20,14 +20,6 @@ export class AccountDropdownComponent {
       await this.authService.logout();
    }
 
-   login() {
-      this.router.navigateByUrl('/login');
-   }
-
-   signup() {
-      this.router.navigateByUrl('/signUp');
-   }
-
    openCart(user :any) {
       this.router.navigate(['user',user.id, 'cart'], { state: { user } });
    }

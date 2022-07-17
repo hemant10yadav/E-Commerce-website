@@ -23,7 +23,7 @@
     <div class="text-white" data-bs-toggle="dropdown" id="dropdownMenuButton1">
       <div>
         <span class="me-1 fs-12">Hello,</span>
-        <span *ngIf="authService.user">{{authService.user.firstName}}</span>
+        <span *ngIf="authService.user" class="special-text" >{{authService.user.firstName}}</span>
         <span *ngIf="!authService.user">Sign in</span>
       </div>
       <div>
@@ -36,13 +36,13 @@
         <li><a [routerLink]="['user', authService.user.id]" [state]="authService.user"
                class="dropdown-item text-white">Profile</a>
         </li>
-        <li><a class="dropdown-item text-white">Wishlist</a></li>
+        <li><a class="dropdown-item text-white"  [routerLink]="['user', authService.user.id, 'wishlist']">Wishlist</a></li>
         <li><a class="dropdown-item text-white">Cart</a></li>
         <li><a (click)="logout()" class="dropdown-item text-white">Logout</a></li>
       </ng-container>
       <ng-container *ngIf="!authService.user">
-        <li><a (click)="login()" class="dropdown-item text-white">Login</a></li>
-        <li><a (click)="signup()" class="dropdown-item text-white">Signup</a></li>
+        <li><a  [routerLink]="['login']" class="dropdown-item text-white">Login</a></li>
+        <li><a [routerLink]="['signup']" class="dropdown-item text-white">Signup</a></li>
       </ng-container>
     </ul>
   </div>
