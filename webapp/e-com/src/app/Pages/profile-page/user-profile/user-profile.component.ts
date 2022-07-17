@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {HttpUserService} from "../../../services/http-user.service";
 import {AuthService} from "../../../services/auth.service";
+import {Iuser} from "../../../interfaces/iuser";
 
 @Component({
    selector: 'app-user-profile',
@@ -9,7 +10,7 @@ import {AuthService} from "../../../services/auth.service";
    styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit {
-   public user: any;
+   public user: Iuser;
 
    constructor(
       private httpService: HttpUserService,
@@ -24,7 +25,7 @@ export class UserProfileComponent implements OnInit {
    async check() {
       this.authService.httpGetLoggedUser().then(
          resolve => {
-            this.user = resolve;
+            this.user = resolve as Iuser;
          },
          reject => {
             this.router.navigateByUrl('/home');

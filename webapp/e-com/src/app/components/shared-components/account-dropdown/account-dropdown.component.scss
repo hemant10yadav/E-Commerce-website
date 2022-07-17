@@ -5,7 +5,7 @@
   width: 35px;
 }
 
-.dropdown-item:focus, .dropdown-item:hover {
+.dropdown-item:focus, .dropdown-item:hover, a.active {
   color: $appColor !important;
   background-color: white;
 }

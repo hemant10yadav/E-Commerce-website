@@ -51,7 +51,7 @@ export class AuthService {
                .subscribe({
                   next: data => {
                      resolve(data);
-                     this.user = data as Iuser;
+                      this.user = this.convertDate(data as Iuser);
                   },
                   error: e => reject(false),
                });
@@ -66,4 +66,10 @@ export class AuthService {
          .navigateByUrl('login', { skipLocationChange: true })
          .then(() => this.router.navigate(['products']));
    }
+
+  convertDate(user: Iuser) :Iuser {
+    let input = JSON.parse(JSON.stringify(user.date));
+    user.date = new Date(Date.UTC(input.year, input.monthValue - 1, input.dayOfMonth));
+    return user;
+  }
 }

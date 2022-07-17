@@ -13,6 +13,7 @@ import {AddProductsComponent} from './Pages/add-products/add-products.component'
 import {ProductsPageComponent} from './Pages/products-page/products-page.component';
 import {ProfilePageComponent} from './Pages/profile-page/profile-page.component';
 import {TokenInterceptor} from './services/token.interceptor';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [

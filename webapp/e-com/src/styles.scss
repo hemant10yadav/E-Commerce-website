@@ -45,6 +45,11 @@ body {
 .bg-badge-color {
   background-color: $badgeColor;
 }
+
 .text-badge-color {
   color: $badgeColor;
+}
+
+.min-vh {
+  min-height: calc(100vh - 50px) !important;
 }

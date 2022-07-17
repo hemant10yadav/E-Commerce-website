@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { UrlService } from './url.service';
+import {Iuser} from "../interfaces/iuser";
 
 @Injectable({
    providedIn: 'root',
