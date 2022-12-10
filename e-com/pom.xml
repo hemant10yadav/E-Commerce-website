@@ -10,7 +10,6 @@
     <packaging>war</packaging>
 
     <name>e-com Maven Webapp</name>
-    <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
     <properties>
@@ -195,7 +194,7 @@
     </build>
     <developers>
         <developer>
-            <name>Hemant singh yadav</name>
+            <name>Hemant Singh Yadav</name>
             <email>hemant.10.yadav@gmail.com</email>
         </developer>
     </developers>

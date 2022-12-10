@@ -9,6 +9,9 @@ import com.e_com.sevice.UserService;
 
 import java.security.Principal;
 
+/**
+ * @author Hemant Singh Yadav
+ */
 @RestController
 @CrossOrigin
 @RequestMapping("/api/auth")

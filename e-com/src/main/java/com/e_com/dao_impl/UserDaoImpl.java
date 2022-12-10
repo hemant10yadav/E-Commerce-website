@@ -13,6 +13,9 @@ import org.springframework.stereotype.Repository;
 
 import com.e_com.Entity.User;
 
+/**
+ * @author Hemant Singh Yadav
+ */
 @Repository
 public class UserDaoImpl implements UserDao {
 
@@ -41,7 +44,8 @@ public class UserDaoImpl implements UserDao {
     public User getUserByUsername(String username) {
         Session currentSession = sessionFactory.getCurrentSession();
        return currentSession.
-               createQuery("from User u where u.username=:username",User.class).setParameter("username", username)
+               createQuery("from User u where u.username=:username",User.class)
+               .setParameter("username", username)
                .uniqueResult();
 
     }
@@ -52,6 +56,25 @@ public class UserDaoImpl implements UserDao {
         Session currentSession = sessionFactory.getCurrentSession();
         currentSession.update(user);
         return currentSession.get(User.class, user.getId());
+    }
+
+
+    @Override
+    public boolean isUsernamePresent(String username) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        User result = currentSession.
+                createQuery("from User u where u.username=:username",User.class)
+                .setParameter("username", username)
+                .uniqueResult();
+        return result != null;
+    }
+
+    @Override
+    public boolean isEmailPresent(String email) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        User result = currentSession.createQuery("from User where u.email=:email",User.class)
+                        .setParameter("email",email).uniqueResult();
+        return result != null;
     }
 
 }

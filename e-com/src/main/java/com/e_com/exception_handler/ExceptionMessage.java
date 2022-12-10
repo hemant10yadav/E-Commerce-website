@@ -15,6 +15,9 @@ public class ExceptionMessage {
         this.timestamp = timestamp;
     }
 
+    public ExceptionMessage(String message) {
+    }
+
     public int getStatus() {
         return status;
     }

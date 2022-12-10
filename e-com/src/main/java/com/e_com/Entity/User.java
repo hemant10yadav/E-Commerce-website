@@ -1,5 +1,7 @@
 package com.e_com.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDateTime;
 
 import javax.persistence.*;
@@ -28,6 +30,7 @@ public class User {
     private final LocalDateTime date = LocalDateTime.now();
 
     @Column(name = "password")
+    @JsonIgnore
     private String password;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

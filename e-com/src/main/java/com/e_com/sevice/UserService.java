@@ -17,4 +17,8 @@ public interface UserService {
     public RestUserData getRestUserByUsername(String username);
     public User getUserByUsername(String username);
 
+    public boolean isUsernamePresent(String username);
+
+    public boolean isEmailPresent(String email);
+
 }

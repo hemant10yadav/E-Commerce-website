@@ -13,6 +13,9 @@ public interface UserDao {
 
     public User getUserByUsername(String username);
 
-
     public User updateUser(User user);
+
+    public boolean isUsernamePresent(String username);
+
+    public boolean isEmailPresent(String email);
 }

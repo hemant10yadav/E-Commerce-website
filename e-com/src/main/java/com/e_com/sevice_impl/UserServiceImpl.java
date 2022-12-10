@@ -62,5 +62,15 @@ public class UserServiceImpl implements UserService {
         return this.userDao.getUserByUsername(username);
     }
 
+    @Override
+    public boolean isUsernamePresent(String username) {
+        return this.userDao.isUsernamePresent(username);
+    }
+
+    @Override
+    public boolean isEmailPresent(String email) {
+        return this.userDao.isEmailPresent(email);
+    }
+
 
 }

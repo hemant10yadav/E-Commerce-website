@@ -1,6 +1,7 @@
 package com.e_com.controller;
 
 import com.e_com.exception_handler.DataBaseException;
+import com.e_com.exception_handler.ExceptionMessage;
 import com.e_com.exception_handler.UserException;
 import com.e_com.rest_class.RestUser;
 import com.e_com.sevice.UserService;
@@ -17,9 +18,14 @@ import com.e_com.Entity.JwtResponse;
 import com.e_com.sevice.CustomUserDetailService;
 import com.e_com.utility.JwtUtil;
 
+import java.util.Date;
+
+/**
+ * @author Hemant Sing Yadav
+ */
 @RestController
 @CrossOrigin
-@RequestMapping("/api")
+@RequestMapping("/api/public")
 public class LoginSignupController {
 
     @Autowired
@@ -58,12 +64,36 @@ public class LoginSignupController {
                 || theUser.getPassword() == null || theUser.getPassword().length() == 0
                 || theUser.getEmail() == null || theUser.getEmail().length() == 0
                 || theUser.getUsername() == null || theUser.getUsername().length() == 0) {
-            throw new DataBaseException("field is empty");
-        } else try {
-            this.userService.saveUser(theUser);
-        } catch (ConstraintViolationException exc) {
-            String hem = exc.getCause().getMessage();
-            throw new DataBaseException(hem);
+            throw new DataBaseException("field are empty");
+        } else {
+            try {
+                this.userService.saveUser(theUser);
+            } catch (ConstraintViolationException exc) {
+                String hem = exc.getCause().getMessage();
+                throw new DataBaseException(hem);
+            }
+        }
+    }
+
+    @PostMapping("/username/{theUsername}")
+    public ExceptionMessage isUsernameExist(@PathVariable String theUsername) {
+        if (theUsername != null) {
+            if (this.userService.isUsernamePresent(theUsername)) {
+                return new ExceptionMessage(
+                        201,
+                        "Username already present",
+                        (long) new Date().getTime());
+            } else {
+                return new ExceptionMessage(
+                        200,
+                        "Username available",
+                        (long) new Date().getTime());
+            }
+        } else {
+            return new ExceptionMessage(
+                    202,
+                    "Username is empty",
+                    (long) new Date().getTime());
         }
     }
 
