@@ -32,7 +32,7 @@ import {RouterModule} from "@angular/router";
     SharedComponentModule,
     NgxUiLoaderModule,
     NgxUiLoaderHttpModule.forRoot({
-      excludeRegexp: ["/e-com/api/user"],
+      excludeRegexp: ["/e-com/api/user","/e-com/api/public/"],
       showForeground: true
     }),
   ],

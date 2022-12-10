@@ -8,42 +8,61 @@
         <h1 class="app-text-color">Sign up</h1>
       </div>
       <form #form="ngForm" (ngSubmit)="submit(form)" name="form">
-        <div class="input-group  mt-4">
-          <label class="input-group-text bg-white" for="firstname">
+        <div class="input-group mt-4">
+          <label class="input-group-text bg-white" for="firstName">
             <img draggable="false" height="30" src="assets/icons/user.gif" width="30">
           </label>
           <input #firstName="ngModel" [(ngModel)]="data.firstName"
-                 [ngClass]="(firstName.hasError('required')  && form.submitted)? 'border-danger' : ''"
-                 class="form-control shadow-none" id="firstname" name="firstname" placeholder="Firstname"
+                 [ngClass]="(firstName.hasError('required') && form.submitted)? 'border-danger' : ''"
+                 class="form-control shadow-none" id="firstName" name="firstName" placeholder="First name"
                  required type="text">
-          <input #lastname="ngModel" [(ngModel)]="data.lastName"
-                 class="form-control shadow-none" name="lastname" placeholder="Lastname" required type="text">
+          <input #lastName="ngModel" [(ngModel)]="data.lastName"
+                 [ngClass]="(lastName.hasError('required') && form.submitted)? 'border-danger' : ''"
+                 class="form-control shadow-none" name="lastName" placeholder="Last name" required type="text">
         </div>
-        <div class="input-group  mt-4">
+        <div class="input-group mt-4">
+          <label class="input-group-text bg-white" for="username">
+            <img draggable="false" height="30" src="assets/icons/icons8-tear-off-calendar.gif" width="30">
+          </label>
+          <input #username="ngModel" [(ngModel)]="data.username"
+                 (ngModelChange)="isUsernameAvailable()"
+                 [ngClass]="(username.hasError('required') && form.submitted) || isUsernamePresent? 'border-danger' : ''"
+                 class="form-control shadow-none"
+                 id="username"
+                 name="username" placeholder="username" required spellcheck="false" type="text">
+        </div>
+        <small *ngIf="!isUsernamePresent && data.username.length >3" class="text-success m-0">Username is available</small>
+        <small *ngIf="isUsernamePresent && data.username.length >3" class="text-danger m-0">Username already exist</small>
+        <!--<div class="input-group mt-4">
           <label class="input-group-text bg-white" for="calender">
             <img draggable="false" height="30" src="assets/icons/icons8-tear-off-calendar.gif" width="30">
           </label>
-          <input #dob="ngModel" [(ngModel)]="data.dob" [ngClass]="(firstName.hasError('required')  && form.submitted)? 'border-danger' : ''"
+          <input #dob="ngModel" [(ngModel)]="data.dob"
+                 [ngClass]="(dob.hasError('required') && form.submitted)? 'border-danger' : ''"
                  class="form-control shadow-none"
                  id="calender" name="dob" required type="date">
-        </div>
-        <div class="input-group  mt-4">
+        </div>-->
+        <div class="input-group mt-4">
           <span class="input-group-text bg-white">
             <img draggable="false" height="30" src="assets/icons/icons8-secured-letter.gif" width="30">
           </span>
-          <input #email="ngModel" [(ngModel)]="data.email" class="form-control shadow-none"
+          <input #email="ngModel" [(ngModel)]="data.email"
+                 [ngClass]="(email.hasError('required') && form.submitted)? 'border-danger' : ''"
+                 class="form-control shadow-none"
                  name="email" placeholder="email" required type="email">
         </div>
-        <div class="input-group  mt-4">
+        <div class="input-group mt-4">
           <span class="input-group-text bg-white">
             <img draggable="false" height="30" src="assets/icons/key-password.gif" width="30">
           </span>
           <input #password="ngModel" [(ngModel)]="data.password" class="form-control shadow-none"
+                 [ngClass]="(password.hasError('required') && form.submitted)? 'border-danger' : ''"
                  name="password" placeholder="Password" required type="password">
-          <input [(ngModel)]="confirmPassword" class="form-control shadow-none" name="confirmPassword"
-                 placeholder="Confirm password" type="password">
+          <input #confirmPassword class="form-control shadow-none" name="confirmPassword"
+                 placeholder="Confirm password" required type="password">
         </div>
-        <button class="btn app-bg-color text-white mt-4 w-100" type="submit">Sign up</button>
+        <button [disabled]="form.hasError('required',['username','password','email','firstName','lastName' , 'confirmPassword'])"
+                class="btn app-bg-color text-white mt-4 w-100" type="submit">Sign up</button>
       </form>
       <div class="mt-4 text-center">
         <label>Already a user ?<a class="ms-2" href="login">login</a></label>

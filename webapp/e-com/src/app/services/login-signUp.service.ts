@@ -4,6 +4,7 @@ import { UrlService } from './url.service';
 import { AuthService } from './auth.service';
 import { map, Observable } from 'rxjs';
 import {Router} from "@angular/router";
+import {Iuser} from "../interfaces/iuser";
 
 @Injectable({
    providedIn: 'root',
@@ -32,7 +33,7 @@ export class LoginSignUpService {
 
    doSignUp(data: any): Observable<any> {
       return this.httpClient
-         .post<any>(this.urlService.signUpUrl, data, this.urlService.skipInterceptor)
+         .post(this.urlService.signUpUrl, data, this.urlService.skipInterceptor)
          .pipe(map((response: any) => response));
    }
 
@@ -44,4 +45,10 @@ export class LoginSignUpService {
      this.router.navigateByUrl('signup')
    }
 
+
+  checkUsername(username: string): Observable<any> {
+    return this.httpClient
+      .post(this.urlService.appUrl +'/public/username/' + username,null, this.urlService.skipInterceptor)
+      .pipe(map((response: any) => response));
+  }
 }

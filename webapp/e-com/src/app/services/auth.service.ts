@@ -39,7 +39,7 @@ export class AuthService {
    }
 
    decryptString(data: any, key: any) {
-      return AES.decrypt(data, key).toString(enc.Utf8);
+     return AES.decrypt(data, key).toString(enc.Utf8);
    }
 
    httpGetLoggedUser() {

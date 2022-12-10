@@ -1,37 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpUserService } from '../../services/http-user.service';
-import { LoginSignUpService } from '../../services/login-signUp.service';
+import {Component} from '@angular/core';
+import {LoginSignUpService} from '../../services/login-signUp.service';
 
 @Component({
   selector: 'app-signup-page',
   templateUrl: './signup-page.component.html',
   styleUrls: ['./signup-page.component.scss'],
 })
-export class SignupPageComponent implements OnInit {
-  data = {
-    firstName: null,
-    lastName: null,
-    email: null,
-    password: null,
-    dob: null,
-    username: null,
+export class SignupPageComponent {
+  public data = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    username: '',
   };
-  confirmPassword: string;
+  public confirmPassword: string;
+  public isUsernamePresent = false;
 
-  ngOnInit(): void {}
+  constructor(private loginSignUpService: LoginSignUpService) {
+  }
 
-  constructor(private loginSignUpService: LoginSignUpService) {}
-
-  submit(data: any) {
-    console.log(data);
+  public submit(data: any): void {
+    console.log(this.data);
     this.loginSignUpService.doSignUp(this.data).subscribe(
       data => {
-        alert('User Registration is done successfully');
+        console.log(data,"done")
       },
       e => {
-        alert('Something went wrong');
+        console.log(e,'Something went wrong');
       }
     );
+  }
+
+  public isUsernameAvailable(): void {
+    if (this.data?.username && this.data.username.length > 4) {
+      this.loginSignUpService.checkUsername(this.data?.username).subscribe((res) => {
+        if (res.status === 200) {
+          this.isUsernamePresent = false;
+        } else if (res.status === 201) {
+          this.isUsernamePresent = true
+        }
+      }, (err) => {
+        console.log(err)
+      })
+    }
   }
 }
