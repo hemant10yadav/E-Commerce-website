@@ -1,56 +1,106 @@
-<div class="me-3 cursor-pointer dropdown d-flex btn btn align-items-center">
-  <div (click)="openWishlist(authService.user)">
-      <span class="position-relative me-3">
-        <i class="fas fa-star text-white fs-4"></i>
-        <ng-container *ngIf="authService.user">
-            <span class="position-absolute top-0 start-100 translate-middle
-                          badge rounded-pill bg-badge-color">
-                  {{authService.user.wishlist?.wishlistProduct?.length}}
-            </span>
-          </ng-container>
-      </span>
-  </div>
-  <div class="ms-auto  cursor-pointer dropdown d-flex btn btn align-items-center">
-    <div (click)="openCart(authService.user)">
-      <span class="position-relative me-4">
-        <i class="fas fa-cart-arrow-down text-white fs-4"></i>
-        <ng-container *ngIf="authService.user">
-            <span class="position-absolute top-0 start-100
-                          translate-middle badge rounded-pill bg-badge-color">
-                  {{authService.user.cart?.cartProducts?.length}}
-            </span>
-        </ng-container>
-      </span>
-    </div>
-    <div class="text-white" data-bs-toggle="dropdown" id="dropdownMenuButton1">
-      <div>
-        <span class="me-1 fs-12">Hello,</span>
-        <span *ngIf="authService.user" class="special-text">{{authService.user.firstName}}</span>
-        <span *ngIf="!authService.user">Sign in</span>
-      </div>
-      <div>
-        <span class="fs-12">Account</span>
-        <span class=" ms-2 dropdown-toggle"></span>
-      </div>
-    </div>
-    <ul aria-labelledby="dropdownMenuButton1" class="dropdown-menu app-bg-color">
-      <ng-container *ngIf="authService.user">
-        <li><a [routerLink]="['user', authService.user.id]" [state]="authService.user"
-               class="dropdown-item text-white">Profile</a>
-        </li>
-        <li><a [routerLinkActive]="'active'" [routerLink]="['user', authService.user.id, 'wishlist']"
-               class="dropdown-item text-white">Wishlist</a>
-        </li>
-        <li><a [routerLinkActive]="'active'" [routerLink]="['user', authService.user.id, 'cart']"
-               class="dropdown-item text-white">Cart</a></li>
-        <li><a (click)="logout()" class="dropdown-item text-white">Logout</a></li>
-      </ng-container>
-      <ng-container *ngIf="!authService.user">
-        <li><a [routerLinkActive]="'active'" [routerLink]="['login']"
-               class="dropdown-item text-white">Login</a></li>
-        <li><a [routerLinkActive]="'active'" [routerLink]="['signup']"
-               class="dropdown-item text-white">Signup</a></li>
-      </ng-container>
-    </ul>
-  </div>
+<div
+	class="me-3 cursor-pointer dropdown d-flex btn btn align-items-center">
+	<div (click)="openWishlist(authService.user)">
+		<span class="position-relative me-3">
+			<i class="fas fa-star text-white fs-4"></i>
+			<ng-container *ngIf="authService.user">
+				<span
+					class="position-absolute top-0 start-100 translate-middle
+					badge rounded-pill bg-badge-color">
+					{{
+						authService.user.wishlist?.wishlistProduct?.length
+					}}
+				</span>
+			</ng-container>
+		</span>
+	</div>
+	<div
+		class="ms-auto cursor-pointer dropdown d-flex btn
+		btn align-items-center">
+		<div (click)="openCart(authService.user)">
+			<span class="position-relative me-4">
+				<i class="fas fa-cart-arrow-down text-white fs-4"></i>
+				<ng-container *ngIf="authService.user">
+					<span
+						class="position-absolute top-0 start-100
+						translate-middle badge rounded-pill bg-badge-color">
+						{{ authService.user.cart?.cartProducts?.length }}
+					</span>
+				</ng-container>
+			</span>
+		</div>
+		<div
+			class="text-white"
+			data-bs-toggle="dropdown"
+			id="dropdownMenuButton1">
+			<div>
+				<span class="me-1 fs-12">Hello,</span>
+				<span *ngIf="authService.user" class="special-text">{{
+					authService.user.firstName
+				}}</span>
+				<span *ngIf="!authService.user">Sign in</span>
+			</div>
+			<div>
+				<span class="fs-12">Account</span>
+				<span class="ms-2 dropdown-toggle"></span>
+			</div>
+		</div>
+		<ul
+			aria-labelledby="dropdownMenuButton1"
+			class="dropdown-menu app-bg-color">
+			<ng-container *ngIf="authService.user">
+				<li>
+					<a
+						[routerLink]="['user', authService.user.id]"
+						[state]="authService.user"
+						class="dropdown-item text-white"
+						>Profile</a
+					>
+				</li>
+				<li>
+					<a
+						[routerLinkActive]="'active'"
+						[routerLink]="[
+							'user',
+							authService.user.id,
+							'wishlist'
+						]"
+						class="dropdown-item text-white"
+						>Wishlist</a
+					>
+				</li>
+				<li>
+					<a
+						[routerLinkActive]="'active'"
+						[routerLink]="['user', authService.user.id, 'cart']"
+						class="dropdown-item text-white"
+						>Cart</a
+					>
+				</li>
+				<li>
+					<a (click)="logout()" class="dropdown-item text-white"
+						>Logout</a
+					>
+				</li>
+			</ng-container>
+			<ng-container *ngIf="!authService.user">
+				<li>
+					<a
+						[routerLinkActive]="'active'"
+						[routerLink]="['login']"
+						class="dropdown-item text-white"
+						>Login</a
+					>
+				</li>
+				<li>
+					<a
+						[routerLinkActive]="'active'"
+						[routerLink]="['signup']"
+						class="dropdown-item text-white"
+						>Signup</a
+					>
+				</li>
+			</ng-container>
+		</ul>
+	</div>
 </div>

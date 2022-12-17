@@ -1,48 +1,74 @@
 <div class="">
-  <div *ngIf="user" class="card min-vh-100">
-    <div class="h5 card-header">
-      <span class="me-1">My Wishlist</span>
-      <span class="">({{user.wishlist.wishlistProduct.length}})</span>
-    </div>
-    <div class="card-body py-0">
-      <ng-container *ngIf="products.length === 0">
-        <div class="text-center mt-5">
-          <button class=" btn app-bg-color">
-            <a class="text-white text-decoration-none" [routerLink]="'/products'"> Go to products ?</a>
-          </button>
-        </div>
-        <div class="d-flex justify-content-center">
-
-          <img class="h-50 w-50" src="assets/images/background/gif/Empty-wishlist.gif">
-        </div>
-      </ng-container>
-      <ng-container *ngIf="products">
-        <div *ngFor="let product of products;" class="row border-bottom  mt-3 pb-3">
-          <div class="col-4 col-sm-3 col-md-2 d-flex justify-content-center">
-            <img class="thumbnail" src="{{product.image[0]}}">
-          </div>
-          <div class="col-5 col-sm-6 col-md-7">
-            <div>
-              <p class="h5 text-truncate" title="{{product.productName}}">{{product.productName}}</p>
-            </div>
-            <div class="d-flex align-items-center mt-2">
-              <img draggable="false" height="16" src="assets/icons/icons8-rupee-material-outlined-16.png">
-              <label class="text-muted text-truncate d-block">{{product.price}}</label>
-            </div>
-          </div>
-          <div class="ms-auto col-auto">
-            <button (click)="addToCart(product.id)" class="btn d-block app-bg-color text-white w-100 mb-3">Add to cart</button>
-            <button (click)="removeFromWishlist(product, products.indexOf(product))"
-                    class="btn w-100 app-bg-color text-white">
-              Delete
-            </button>
-          </div>
-        </div>
-      </ng-container>
-    </div>
-    <div>
-
-    </div>
-
-  </div>
+	<div *ngIf="user" class="card min-vh-100">
+		<div class="h5 card-header">
+			<span class="me-1">My Wishlist</span>
+			<span class=""
+				>({{ user.wishlist.wishlistProduct.length }})</span
+			>
+		</div>
+		<div class="card-body py-0">
+			<ng-container *ngIf="products.length === 0">
+				<div class="text-center mt-5">
+					<button class="btn app-bg-color">
+						<a
+							class="text-white text-decoration-none"
+							[routerLink]="'/products'">
+							Go to products ?</a
+						>
+					</button>
+				</div>
+				<div class="d-flex justify-content-center">
+					<img
+						class="h-50 w-50"
+						src="assets/images/background/gif/Empty-wishlist.gif" />
+				</div>
+			</ng-container>
+			<ng-container *ngIf="products">
+				<div
+					*ngFor="let product of products"
+					class="row border-bottom mt-3 pb-3">
+					<div
+						class="col-4 col-sm-3 col-md-2 d-flex justify-content-center">
+						<img class="thumbnail" src="{{ product.image[0] }}" />
+					</div>
+					<div class="col-5 col-sm-6 col-md-7">
+						<div>
+							<p
+								class="h5 text-truncate"
+								title="{{ product.productName }}">
+								{{ product.productName }}
+							</p>
+						</div>
+						<div class="d-flex align-items-center mt-2">
+							<img
+								draggable="false"
+								height="16"
+								src="assets/icons/icons8-rupee-material-outlined-16.png" />
+							<label class="text-muted text-truncate d-block">{{
+								product.price
+							}}</label>
+						</div>
+					</div>
+					<div class="ms-auto col-auto">
+						<button
+							(click)="addToCart(product.id)"
+							class="btn d-block app-bg-color text-white w-100 mb-3">
+							Add to cart
+						</button>
+						<button
+							(click)="
+								removeFromWishlist(
+									product,
+									products.indexOf(product)
+								)
+							"
+							class="btn w-100 app-bg-color text-white">
+							Delete
+						</button>
+					</div>
+				</div>
+			</ng-container>
+		</div>
+		<div></div>
+	</div>
 </div>

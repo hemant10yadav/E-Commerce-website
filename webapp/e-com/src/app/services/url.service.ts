@@ -1,16 +1,16 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class UrlService {
-
-  constructor() {
-  }
-  appUrl = 'http://localhost:8080/e-com/api';
-  productUrl = this.appUrl + '/public/products';
-  loginUrl = this.appUrl + '/public/login';
-  signUpUrl = this.appUrl + '/public/signup';
-  userUrl = this.appUrl + '/auth/user';
-  skipInterceptor = {headers: {skip: "true"}};
+	public appUrl: string = 'http://localhost:8080/e-com/api';
+	public productUrl: string =
+		this.appUrl + '/public/products';
+	public loginUrl: string = this.appUrl + '/public/login';
+	public signUpUrl: string = this.appUrl + '/public/signup';
+	public userUrl: string = this.appUrl + '/auth/user';
+	public skipInterceptor: {
+		headers: { skip: string };
+	} = { headers: { skip: 'true' } };
 }

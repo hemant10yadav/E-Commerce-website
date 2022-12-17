@@ -7,69 +7,78 @@ import { map } from 'rxjs';
 import { Iuser } from '../interfaces/iuser';
 
 @Injectable({
-   providedIn: 'root',
+	providedIn: 'root',
 })
 export class AuthService {
-   joke = 'Are you kidding me?';
-   loggedUser: boolean;
-   user: Iuser | null;
+	joke = 'Are you kidding me?';
+	loggedUser: boolean;
+	user: Iuser | null;
 
-   constructor(
-      private router: Router,
-      private httpClient: HttpClient,
-      private urlService: UrlService
-   ) {}
+	constructor(
+		private router: Router,
+		private httpClient: HttpClient,
+		private urlService: UrlService
+	) {}
 
-   saveUser(data: any) {
-      localStorage.setItem(this.joke, this.encryptString(data, 'tokenValue'));
-   }
+	saveUser(data: any) {
+		localStorage.setItem(
+			this.joke,
+			this.encryptString(data, 'tokenValue')
+		);
+	}
 
-   getAccessToken() {
-      if (localStorage.getItem(this.joke)) {
-         const decryptValue = this.decryptString(
-            localStorage.getItem(this.joke),
-            'tokenValue'
-         );
-         return decryptValue;
-      } else return null;
-   }
+	getAccessToken() {
+		if (localStorage.getItem(this.joke)) {
+			const decryptValue = this.decryptString(
+				localStorage.getItem(this.joke),
+				'tokenValue'
+			);
+			return decryptValue;
+		} else return null;
+	}
 
-   encryptString(data: any, key: string) {
-      return AES.encrypt(data, key).toString();
-   }
+	encryptString(data: any, key: string) {
+		return AES.encrypt(data, key).toString();
+	}
 
-   decryptString(data: any, key: any) {
-     return AES.decrypt(data, key).toString(enc.Utf8);
-   }
+	decryptString(data: any, key: any) {
+		return AES.decrypt(data, key).toString(enc.Utf8);
+	}
 
-   httpGetLoggedUser() {
-      return new Promise((resolve, reject) => {
-         if (this.getAccessToken()) {
-            this.httpClient
-               .get(this.urlService.userUrl)
-               .pipe(map((response: any) => response))
-               .subscribe({
-                  next: data => {
-                     resolve(data);
-                      this.user = this.convertDate(data as Iuser);
-                  },
-                  error: e => reject(false),
-               });
-         } else reject(false);
-      });
-   }
+	httpGetLoggedUser() {
+		return new Promise((resolve, reject) => {
+			if (this.getAccessToken()) {
+				this.httpClient
+					.get(this.urlService.userUrl)
+					.pipe(map((response: any) => response))
+					.subscribe({
+						next: data => {
+							resolve(data);
+							this.user = this.convertDate(data as Iuser);
+						},
+						error: e => reject(false),
+					});
+			} else reject(false);
+		});
+	}
 
-   async logout() {
-      localStorage.removeItem(this.joke);
-      this.user = null;
-      await this.router
-         .navigateByUrl('login', { skipLocationChange: true })
-         .then(() => this.router.navigate(['products']));
-   }
+	async logout() {
+		localStorage.removeItem(this.joke);
+		this.user = null;
+		await this.router
+			.navigateByUrl('login', { skipLocationChange: true })
+			.then(() => this.router.navigate(['products']));
+	}
 
-  convertDate(user: Iuser) :Iuser {
-    let input = JSON.parse(JSON.stringify(user.date));
-    user.date = new Date(Date.UTC(input.year, input.monthValue - 1, input.dayOfMonth));
-    return user;
-  }
+	convertDate(user: Iuser): Iuser {
+		let input = JSON.parse(JSON.stringify(user.date));
+		user.date = new Date(
+			Date.UTC(
+				input.year,
+				input.monthValue - 1,
+				input.dayOfMonth
+			)
+		);
+		return user;
+	}
 }

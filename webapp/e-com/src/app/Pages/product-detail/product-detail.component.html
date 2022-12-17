@@ -1,74 +1,83 @@
 <div *ngIf="product" class="mx-5">
-  <div class="row justify-content-center mt-5">
-    <div class="col-12 col-sm-5">
-      <div class="w-100  d-flex justify-content-center align-items-center display-image">
-        <img src="{{displayImage}}">
-      </div>
-      <div class="mt-3 d-flex justify-content-around rounded">
-        <div (click)="changeDisplayImage($event,i)"
-             *ngFor="let image of product?.image, let i=index"
-             class="border d-flex justify-content-center align-items-center cursor-pointer mini-display-image">
-          <img src="{{image}}">
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-sm-7">
-      <div>
-        <h4>{{product.productName}}</h4>
-      </div>
-      <div class="mt-3 row">
-        <div class="col-3 col-sm-2">
-          <label class="fs-18 text-muted">Price :</label>
-        </div>
-        <div class="col-9">
-          <label class="fs-16">{{product.price}}</label>
-        </div>
-      </div>
-      <div class="mt-3 row">
-        <div class="col-3 col-sm-2">
-          <label class="fs-18 text-muted">Category :</label>
-        </div>
-        <div class="col-9">
-          <label class="fs-16">{{product.category}}</label>
-        </div>
-      </div>
-      <div class="mt-3 row">
-        <div class="col-3 col-sm-2">
-          <label class="fs-18 text-muted">Subcategory :</label>
-        </div>
-        <div class="col-9">
-          <label class="fs-16">{{product.subcategory}}</label>
-        </div>
-      </div>
-      <div class="mt-3 row">
-        <div class="col-3 col-sm-2">
-          <label class="fs-18 text-muted">Size :</label>
-        </div>
-        <div class="col-9">
-          <select class="fs-16" name="Select">
-            <option>Select</option>
-            <option value=""></option>
-          </select>
-        </div>
-      </div>
-      <div class="mt-3 row">
-        <div class="col-3 col-sm-2">
-          <label class="fs-18 text-muted">Description :</label>
-        </div>
-        <div class="col-9">
-          <label class="fs-16">{{product.description}}</label>
-        </div>
-      </div>
-      <div class="mt-4">
-        <button (click)="addToCart(user.id,product.id)" class="mt-3 w-75 btn app-bg-color btn-lg text-white shadow-none">
-          <i class="me-2 fas fa-cart-arrow-down"></i>
-          <span>Add to cart</span>
-        </button>
-        <button (click)="addToWishlist(user.id,product.id)" class=" mt-3 w-75 btn app-bg-color btn-lg text-white shadow-none">
-          <i class="me-2 fas fa-briefcase"></i>
-          <span>Add to wishlist</span>
-        </button>
-      </div>
-    </div>
-  </div>
+	<div class="row justify-content-center mt-5">
+		<div class="col-12 col-sm-5">
+			<div
+				class="w-100 d-flex justify-content-center
+				       align-items-center display-image">
+				<img src="{{ displayImage }}" />
+			</div>
+			<div class="mt-3 d-flex justify-content-around rounded">
+				<div
+					(click)="changeDisplayImage($event, i)"
+					*ngFor="let image of product?.image; let i = index"
+					class="border d-flex justify-content-center
+					       align-items-center cursor-pointer
+					       mini-display-image">
+					<img src="{{ image }}" />
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-sm-7">
+			<div>
+				<h4>{{ product.productName }}</h4>
+			</div>
+			<div class="mt-3 row">
+				<div class="col-3 col-sm-2">
+					<label class="fs-18 text-muted">Price :</label>
+				</div>
+				<div class="col-9">
+					<label class="fs-16">{{ product.price }}</label>
+				</div>
+			</div>
+			<div class="mt-3 row">
+				<div class="col-3 col-sm-2">
+					<label class="fs-18 text-muted">Category :</label>
+				</div>
+				<div class="col-9">
+					<label class="fs-16">{{ product.category }}</label>
+				</div>
+			</div>
+			<div class="mt-3 row">
+				<div class="col-3 col-sm-2">
+					<label class="fs-18 text-muted">Subcategory :</label>
+				</div>
+				<div class="col-9">
+					<label class="fs-16">{{ product.subcategory }}</label>
+				</div>
+			</div>
+			<div class="mt-3 row">
+				<div class="col-3 col-sm-2">
+					<label class="fs-18 text-muted">Size :</label>
+				</div>
+				<div class="col-9">
+					<select class="fs-16" name="Select">
+						<option>Select</option>
+						<option value=""></option>
+					</select>
+				</div>
+			</div>
+			<div class="mt-3 row">
+				<div class="col-3 col-sm-2">
+					<label class="fs-18 text-muted">Description :</label>
+				</div>
+				<div class="col-9">
+					<label class="fs-16">{{ product.description }}</label>
+				</div>
+			</div>
+			<div class="mt-4">
+				<button
+					(click)="addToCart(user.id, product.id)"
+					class="mt-3 w-75 btn app-bg-color btn-lg text-white shadow-none">
+					<i class="me-2 fas fa-cart-arrow-down"></i>
+					<span>Add to cart</span>
+				</button>
+				<button
+					(click)="addToWishlist(user.id, product.id)"
+					class="mt-3 w-75 btn app-bg-color btn-lg text-white shadow-none">
+					<i class="me-2 fas fa-briefcase"></i>
+					<span>Add to wishlist</span>
+				</button>
+			</div>
+		</div>
+	</div>
 </div>

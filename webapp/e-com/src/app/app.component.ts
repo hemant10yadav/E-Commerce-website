@@ -3,16 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'e-com';
+	title = 'e-com';
 
-  constructor(private router: Router) {}
+	constructor(private router: Router) {}
 
-  signup() {
-    this.router.navigateByUrl('signup');
-  }
+	signup() {
+		this.router.navigateByUrl('signup');
+	}
 }

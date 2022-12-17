@@ -1,51 +1,87 @@
 <div class="row mx-5">
-  <div class="d-none d-xl-block col-xl-7">
-    <div class="m-0 p-0 d-flex justify-content-center">
-      <img class="img-fluid" draggable="false" src="assets/images/background/gif/cart.gif">
-    </div>
-  </div>
-  <div class="col col-xl-5 text-center rounded-3 mt-5">
-    <h1 class="mb-5 app-text-color">Login</h1>
-    <form (ngSubmit)="login()">
-      <div *ngIf="wrongCredentials" class="d-flex justify-content-center">
-        <p class=" alert-danger w-50 rounded-2 ">{{message}}</p>
-      </div>
-      <div class="input-group input-group-lg">
-        <span class="input-group-text bg-white" id="inputGroup-sizing-lg">
-          <img draggable="false" height="30" src="assets/icons/user.gif"
-               width="30">
-        </span>
-        <input (ngModelChange)="checkValue()" [(ngModel)]="data.username"
-               class="form-control shadow-none" name="email" placeholder="Username" type="email">
-      </div>
-      <div class="input-group input-group-lg mt-4">
-        <span class="input-group-text bg-white">
-          <img draggable="false" height="30" src="assets/icons/key-password.gif"
-               width="30">
-        </span>
-        <input (ngModelChange)="checkValue()" [(ngModel)]="data.password" aria-label="Sizing example input"
-               class="form-control shadow-none" name="password" placeholder="Password" type="password">
-      </div>
-      <div class="text-start mt-2">
-        <a class="fs-12 cursor-pointer">Forgot password ?</a>
-      </div>
-      <div>
-        <button  [disabled]="loginDisable"
-                class="btn app-bg-color mt-3 w-100 text-white shadow-none"
-                type="submit">Login
-        </button>
-      </div>
-    </form>
-    <div class="mt-4 d-flex justify-content-evenly">
-      <button class=" btn bg-facebook shadow-none">
-        <img draggable="false" height="30" src="assets/icons/facebook.gif">
-      </button>
-      <button class=" btn bg-gmail shadow-none">
-        <img draggable="false" height="30" src="assets/icons/icons8-gmail-logo.gif">
-      </button>
-    </div>
-    <div class="mt-4 text-center">
-      <label>Create a new account ?<a class="ms-2" href="signup">Signup</a></label>
-    </div>
-  </div>
+	<div class="d-none d-xl-block col-xl-7">
+		<div class="m-0 p-0 d-flex justify-content-center">
+			<img
+				class="img-fluid"
+				draggable="false"
+				src="assets/images/background/gif/cart.gif" />
+		</div>
+	</div>
+	<div class="col col-xl-5 text-center rounded-3 mt-5">
+		<h1 class="mb-5 app-text-color">Login</h1>
+		<form (ngSubmit)="login()">
+			<div
+				*ngIf="wrongCredentials"
+				class="d-flex justify-content-center">
+				<p class="alert-danger w-50 rounded-2">{{ message }}</p>
+			</div>
+			<div class="input-group input-group-lg">
+				<span
+					class="input-group-text bg-white"
+					id="inputGroup-sizing-lg">
+					<img
+						draggable="false"
+						height="30"
+						src="assets/icons/user.gif"
+						width="30" />
+				</span>
+				<input
+					(ngModelChange)="checkValue()"
+					[(ngModel)]="data.username"
+					class="form-control shadow-none"
+					name="email"
+					placeholder="Username"
+					type="email" />
+			</div>
+			<div class="input-group input-group-lg mt-4">
+				<span class="input-group-text bg-white">
+					<img
+						draggable="false"
+						height="30"
+						src="assets/icons/key-password.gif"
+						width="30" />
+				</span>
+				<input
+					(ngModelChange)="checkValue()"
+					[(ngModel)]="data.password"
+					aria-label="Sizing example input"
+					class="form-control shadow-none"
+					name="password"
+					placeholder="Password"
+					type="password" />
+			</div>
+			<div class="text-start mt-2">
+				<a class="fs-12 cursor-pointer">Forgot password ?</a>
+			</div>
+			<div>
+				<button
+					[disabled]="loginDisable"
+					class="btn app-bg-color mt-3 w-100 text-white shadow-none"
+					type="submit">
+					Login
+				</button>
+			</div>
+		</form>
+		<div class="mt-4 d-flex justify-content-evenly">
+			<button class="btn bg-facebook shadow-none">
+				<img
+					draggable="false"
+					height="30"
+					src="assets/icons/facebook.gif" />
+			</button>
+			<button class="btn bg-gmail shadow-none">
+				<img
+					draggable="false"
+					height="30"
+					src="assets/icons/icons8-gmail-logo.gif" />
+			</button>
+		</div>
+		<div class="mt-4 text-center">
+			<label
+				>Create a new account ?<a class="ms-2" href="signup"
+					>Signup</a
+				></label
+			>
+		</div>
+	</div>
 </div>

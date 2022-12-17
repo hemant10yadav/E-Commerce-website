@@ -1,72 +1,100 @@
 <div class="mx-3">
-  <div class="row justify-content-center">
-    <div class="d-none d-md-block col-sm-6 d-flex">
-      <img class="img-fluid" src="assets/images/background/gif/Add%20to%20Cart%20(2).gif">
-    </div>
-    <div class="mt-5 col-12 col-sm-6 col-xl-5">
-      <div class="text-center">
-        <h1 class="app-text-color">Sign up</h1>
-      </div>
-      <form #form="ngForm" (ngSubmit)="submit(form)" name="form">
-        <div class="input-group mt-4">
-          <label class="input-group-text bg-white" for="firstName">
-            <img draggable="false" height="30" src="assets/icons/user.gif" width="30">
-          </label>
-          <input #firstName="ngModel" [(ngModel)]="data.firstName"
-                 [ngClass]="(firstName.hasError('required') && form.submitted)? 'border-danger' : ''"
-                 class="form-control shadow-none" id="firstName" name="firstName" placeholder="First name"
-                 required type="text">
-          <input #lastName="ngModel" [(ngModel)]="data.lastName"
-                 [ngClass]="(lastName.hasError('required') && form.submitted)? 'border-danger' : ''"
-                 class="form-control shadow-none" name="lastName" placeholder="Last name" required type="text">
-        </div>
-        <div class="input-group mt-4">
-          <label class="input-group-text bg-white" for="username">
-            <img draggable="false" height="30" src="assets/icons/icons8-tear-off-calendar.gif" width="30">
-          </label>
-          <input #username="ngModel" [(ngModel)]="data.username"
-                 (ngModelChange)="isUsernameAvailable()"
-                 [ngClass]="(username.hasError('required') && form.submitted) || isUsernamePresent? 'border-danger' : ''"
-                 class="form-control shadow-none"
-                 id="username"
-                 name="username" placeholder="username" required spellcheck="false" type="text">
-        </div>
-        <small *ngIf="!isUsernamePresent && data.username.length >3" class="text-success m-0">Username is available</small>
-        <small *ngIf="isUsernamePresent && data.username.length >3" class="text-danger m-0">Username already exist</small>
-        <!--<div class="input-group mt-4">
-          <label class="input-group-text bg-white" for="calender">
-            <img draggable="false" height="30" src="assets/icons/icons8-tear-off-calendar.gif" width="30">
-          </label>
-          <input #dob="ngModel" [(ngModel)]="data.dob"
-                 [ngClass]="(dob.hasError('required') && form.submitted)? 'border-danger' : ''"
-                 class="form-control shadow-none"
-                 id="calender" name="dob" required type="date">
-        </div>-->
-        <div class="input-group mt-4">
-          <span class="input-group-text bg-white">
-            <img draggable="false" height="30" src="assets/icons/icons8-secured-letter.gif" width="30">
-          </span>
-          <input #email="ngModel" [(ngModel)]="data.email"
-                 [ngClass]="(email.hasError('required') && form.submitted)? 'border-danger' : ''"
-                 class="form-control shadow-none"
-                 name="email" placeholder="email" required type="email">
-        </div>
-        <div class="input-group mt-4">
-          <span class="input-group-text bg-white">
-            <img draggable="false" height="30" src="assets/icons/key-password.gif" width="30">
-          </span>
-          <input #password="ngModel" [(ngModel)]="data.password" class="form-control shadow-none"
-                 [ngClass]="(password.hasError('required') && form.submitted)? 'border-danger' : ''"
-                 name="password" placeholder="Password" required type="password">
-          <input #confirmPassword class="form-control shadow-none" name="confirmPassword"
-                 placeholder="Confirm password" required type="password">
-        </div>
-        <button [disabled]="form.hasError('required',['username','password','email','firstName','lastName' , 'confirmPassword'])"
-                class="btn app-bg-color text-white mt-4 w-100" type="submit">Sign up</button>
-      </form>
-      <div class="mt-4 text-center">
-        <label>Already a user ?<a class="ms-2" href="login">login</a></label>
-      </div>
-    </div>
-  </div>
+	<div class="row justify-content-center">
+		<div class="d-none d-md-block col-sm-6 d-flex">
+			<img
+				alt="cart image"
+				class="img-fluid"
+				src="assets/images/background/gif/Add%20to%20Cart%20(2).gif" />
+		</div>
+		<div class="mt-5 col-12 col-sm-6 col-xl-5">
+			<div class="text-center">
+				<h1 class="app-text-color">Sign up</h1>
+			</div>
+			<form [formGroup]="form">
+				<div class="form-floating mt-3">
+					<input
+						class="form-control shadow-none"
+						formControlName="firstName"
+						id="firstName"
+						placeholder="First name"
+						type="text" />
+					<label for="firstName">First name</label>
+				</div>
+				<div class="form-floating mt-3">
+					<input
+						class="form-control shadow-none"
+						formControlName="lastName"
+						id="lastName"
+						placeholder="Last name"
+						type="text" />
+					<label for="lastName">Last name</label>
+				</div>
+				<div class="form-floating mt-3">
+					<input
+						class="form-control shadow-none"
+						formControlName="username"
+						id="username"
+						placeholder="Username"
+						type="text" />
+					<label for="username">Username</label>
+				</div>
+				<small *ngIf="username.errors?.minLength"
+					>Must contain 4 characters</small
+				>
+				<small
+					*ngIf="username.errors?.usernameTaken"
+					class="text-danger"
+					>Username already exist</small
+				>
+				<div class="form-floating mt-3">
+					<input
+						class="form-control shadow-none"
+						formControlName="email"
+						id="email"
+						placeholder="name@example.com"
+						type="email" />
+					<label for="email">Email address</label>
+				</div>
+				<small *ngIf="email.errors?.email" class="text-danger"
+					>Invalid email</small
+				>
+				<div class="form-floating mt-3">
+					<input
+						class="form-control shadow-none"
+						formControlName="password"
+						id="Password"
+						placeholder="Password"
+						type="password" />
+					<label for="Password">Password</label>
+				</div>
+				<small
+					*ngIf="password.errors?.passwordStrength"
+					class="text-danger"
+					>Must contain [A-Z],[a-z] & [0-9]</small
+				>
+				<div class="form-floating mt-3">
+					<input
+						class="form-control shadow-none"
+						formControlName="confirmPassword"
+						id="confirmPass"
+						placeholder="Password"
+						type="password" />
+					<label for="confirmPass">Confirm password</label>
+				</div>
+				<button
+					[disabled]="!form.valid"
+					class="btn app-bg-color text-white mt-4 w-100"
+					type="submit">
+					Sign up
+				</button>
+			</form>
+			<div class="mt-4 text-center">
+				<label
+					>Already a user ?<a class="ms-2" href="login">login</a>
+				</label>
+				{{ form.value | json }}
+				{{ form.valid | json }}
+			</div>
+		</div>
+	</div>
 </div>

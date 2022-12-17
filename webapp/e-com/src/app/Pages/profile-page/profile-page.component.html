@@ -1,22 +1,49 @@
 <div class="container border-0">
-  <div class="row">
-    <div class="col-2 pe-0 list-group">
-      <ul class="list-group">
-        <li [routerLink]="'user-profile'" class="list-group-item cursor-pointer">User Profile</li>
-        <li [routerLinkActive]="'active'" class="list-group-item cursor-pointer">Your Order History</li>
-        <li class="list-group-item cursor-pointer">Track Your Orders</li>
-        <li [routerLinkActive]="'active'" [routerLink]="'cart'" class="list-group-item cursor-pointer">Your Cart</li>
-        <li [routerLinkActive]="'active'" [routerLink]="'wishlist'" [state]="user"
-            class="list-group-item cursor-pointer">Your wishlist
-        </li>
-        <li class="list-group-item cursor-pointer">Sell A product</li>
-        <li class="list-group-item cursor-pointer">Your products</li>
-        <li class="list-group-item cursor-pointer">Settings</li>
-        <li (click)="logout()" class="list-group-item cursor-pointer">Logout</li>
-      </ul>
-    </div>
-    <div class="col-10 ps-0">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col-2 pe-0 list-group">
+			<ul class="list-group">
+				<li
+					[routerLink]="'user-profile'"
+					class="list-group-item cursor-pointer">
+					User Profile
+				</li>
+				<li
+					[routerLinkActive]="'active'"
+					class="list-group-item cursor-pointer">
+					Your Order History
+				</li>
+				<li class="list-group-item cursor-pointer">
+					Track Your Orders
+				</li>
+				<li
+					[routerLinkActive]="'active'"
+					[routerLink]="'cart'"
+					class="list-group-item cursor-pointer">
+					Your Cart
+				</li>
+				<li
+					[routerLinkActive]="'active'"
+					[routerLink]="'wishlist'"
+					[state]="user"
+					class="list-group-item cursor-pointer">
+					Your wishlist
+				</li>
+				<li class="list-group-item cursor-pointer">
+					Sell A product
+				</li>
+				<li class="list-group-item cursor-pointer">
+					Your products
+				</li>
+				<li class="list-group-item cursor-pointer">Settings</li>
+				<li
+					(click)="logout()"
+					class="list-group-item cursor-pointer">
+					Logout
+				</li>
+			</ul>
+		</div>
+		<div class="col-10 ps-0">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
 </div>
